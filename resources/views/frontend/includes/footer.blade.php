@@ -121,63 +121,47 @@
                 </div>
                 <div class="col-xl-2 col-md-6 col-sm-6 col-12">
                     <div class="footer-widget footer-menu-widget clearfix">
-                        <h4 class="footer-title">Company</h4>
+                        <h4 class="footer-title">Quick Links</h4>
                         <div class="footer-menu">
                             <ul>
-                                <li><a href="about.html">About</a></li>
-                                <li><a href="blog.html">Blog</a></li>
-                                <li><a href="shop.html">All Products</a></li>
-                                <li><a href="locations.html">Locations Map</a></li>
-                                <li><a href="faq.html">FAQ</a></li>
-                                <li><a href="contact.html">Contact us</a></li>
+                                <li><a href="{{ route('about.index') }}">About</a></li>
+                                <li><a href="#!">Blog</a></li>
+                                <li><a href="#!">FAQ</a></li>
+                                <li><a href="#!">Privacy & Policy</a></li>
+                                <li><a href="#!">Terms & Conditions</a></li>
+                                <li><a href="{{ route('contact.index') }}">Contact us</a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-2 col-md-6 col-sm-6 col-12">
                     <div class="footer-widget footer-menu-widget clearfix">
-                        <h4 class="footer-title">Services</h4>
+                        <h4 class="footer-title">Core Services</h4>
                         <div class="footer-menu">
                             <ul>
-                                <li><a href="order-tracking.html">Order tracking</a></li>
-                                <li><a href="wishlist.html">Wish List</a></li>
-                                <li><a href="login.html">Login</a></li>
-                                <li><a href="account.html">My account</a></li>
-                                <li><a href="about.html">Terms & Conditions</a></li>
-                                <li><a href="about.html">Promotional Offers</a></li>
+                                @foreach ($footer_service as $each)
+                                    <li>{{ $each['title'] }}</li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-2 col-md-6 col-sm-6 col-12">
                     <div class="footer-widget footer-menu-widget clearfix">
-                        <h4 class="footer-title">Customer Care</h4>
+                        <h4 class="footer-title">Our Amenities</h4>
                         <div class="footer-menu">
                             <ul>
-                                <li><a href="login.html">Login</a></li>
-                                <li><a href="account.html">My account</a></li>
-                                <li><a href="wishlist.html">Wish List</a></li>
-                                <li><a href="order-tracking.html">Order tracking</a></li>
-                                <li><a href="faq.html">FAQ</a></li>
-                                <li><a href="contact.html">Contact us</a></li>
+                                @foreach ($footer_amenity as $each)
+                                    <li>{{ $each['title'] }}</li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-3 col-md-6 col-sm-12 col-12">
                     <div class="footer-widget footer-newsletter-widget">
-                        <h4 class="footer-title">Newsletter</h4>
-                        <p>Subscribe to our weekly Newsletter and receive updates via email.</p>
-                        <div class="footer-newsletter">
-                            <form action="#">
-                                <input type="email" name="email" placeholder="Email*">
-                                <div class="btn-wrapper">
-                                    <button class="theme-btn-1 btn" type="submit"><i class="fas fa-location-arrow"></i></button>
-                                </div>
-                            </form>
-                        </div>
-                        <h5 class="mt-30">We Accept</h5>
-                        <img src="{{ asset('frontend/img/icons/payment-4.png')}}" alt="Payment Image">
+                        {{-- <h4 class="footer-title">Map Location</h4> --}}
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3652.8134733493607!2d90.41791169999999!3d23.71835415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8539c8e1dd7%3A0xf454a7a2dc22ba5!2sWari%2C%20Dhaka!5e0!3m2!1sen!2sbd!4v1688847422592!5m2!1sen!2sbd" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>
@@ -188,15 +172,15 @@
             <div class="row">
                 <div class="col-md-6 col-12">
                     <div class="ltn__copyright-design clearfix">
-                        <p>All Rights Reserved @ Company <span class="current-year"></span></p>
+                        <p>All Rights Reserved @ KStudio <span class="current-year"></span></p>
                     </div>
                 </div>
                 <div class="col-md-6 col-12 align-self-center">
                     <div class="ltn__copyright-menu text-end">
                         <ul>
-                            <li><a href="#">Terms & Conditions</a></li>
-                            <li><a href="#">Claim</a></li>
-                            <li><a href="#">Privacy & Policy</a></li>
+                            <li><a href="#!">Terms & Conditions</a></li>
+                            <li><a href="#!">Claim</a></li>
+                            <li><a href="#!">Privacy & Policy</a></li>
                         </ul>
                     </div>
                 </div>

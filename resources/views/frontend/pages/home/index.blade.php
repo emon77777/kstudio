@@ -79,43 +79,17 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-3 col-sm-6 align-self-center">
-                <div class="ltn__counterup-item text-color-white---">
-                    <div class="counter-icon">
-                        <i class="flaticon-select"></i>
+            @foreach ($achievement_data as $each_achievement)
+                <div class="col-md-3 col-sm-6 align-self-center">
+                    <div class="ltn__counterup-item text-color-white---">
+                        <div class="counter-icon">
+                            <i class="{{ $each_achievement['icon'] }}"></i>
+                        </div>
+                        <h1><span class="counter">{{ $each_achievement['amount'] }}</span><span class="counterUp-icon">+</span> </h1>
+                        <h6>{{ $each_achievement['title'] }}</h6>
                     </div>
-                    <h1><span class="counter">560</span><span class="counterUp-icon">+</span> </h1>
-                    <h6>Total Area Sq</h6>
                 </div>
-            </div>
-            <div class="col-md-3 col-sm-6 align-self-center">
-                <div class="ltn__counterup-item text-color-white---">
-                    <div class="counter-icon">
-                        <i class="flaticon-office"></i>
-                    </div>
-                    <h1><span class="counter">197</span><span class="counterUp-letter">K</span><span
-                            class="counterUp-icon">+</span> </h1>
-                    <h6>Apartments Sold</h6>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 align-self-center">
-                <div class="ltn__counterup-item text-color-white---">
-                    <div class="counter-icon">
-                        <i class="flaticon-excavator"></i>
-                    </div>
-                    <h1><span class="counter">268</span><span class="counterUp-icon">+</span> </h1>
-                    <h6>Total Constructions</h6>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 align-self-center">
-                <div class="ltn__counterup-item text-color-white---">
-                    <div class="counter-icon">
-                        <i class="flaticon-armchair"></i>
-                    </div>
-                    <h1><span class="counter">340</span><span class="counterUp-icon">+</span> </h1>
-                    <h6>Apartio Rooms</h6>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </div>
@@ -161,53 +135,7 @@
                     </div>
                 </div>
             @endforeach
-
-
-            <div class="col-lg-4 col-sm-6 col-12">
-                <div class="ltn__feature-item ltn__feature-item-6 text-center bg-white  box-shadow-1">
-                    <div class="ltn__feature-icon">
-                        <!-- <span><i class="flaticon-house"></i></span> -->
-                        <img src="{{asset("frontend/img/icons/icon-img/21.png")}}" alt="#">
-                    </div>
-                    <div class="ltn__feature-info">
-                        <h3><a href="service-details.html">Buy a home</a></h3>
-                        <p>over 1 million+ homes for sale available on the website, we can match you with a house you
-                            will want to call home.</p>
-                        <a class="ltn__service-btn" href="service-details.html">Find A Home <i
-                                class="flaticon-right-arrow"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 col-12">
-                <div class="ltn__feature-item ltn__feature-item-6 text-center bg-white  box-shadow-1 active">
-                    <div class="ltn__feature-icon">
-                        <!-- <span><i class="flaticon-house-3"></i></span> -->
-                        <img src="{{asset("frontend/img/icons/icon-img/22.png")}}" alt="#">
-                    </div>
-                    <div class="ltn__feature-info">
-                        <h3><a href="service-details.html">Rent a home</a></h3>
-                        <p>over 1 million+ homes for sale available on the website, we can match you with a house you
-                            will want to call home.</p>
-                        <a class="ltn__service-btn" href="service-details.html">Find A Home <i
-                                class="flaticon-right-arrow"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 col-12">
-                <div class="ltn__feature-item ltn__feature-item-6 text-center bg-white  box-shadow-1">
-                    <div class="ltn__feature-icon">
-                        <!-- <span><i class="flaticon-deal-1"></i></span> -->
-                        <img src="{{asset("frontend/img/icons/icon-img/23.png")}}" alt="#">
-                    </div>
-                    <div class="ltn__feature-info">
-                        <h3><a href="service-details.html">Sell a home</a></h3>
-                        <p>over 1 million+ homes for sale available on the website, we can match you with a house you
-                            will want to call home.</p>
-                        <a class="ltn__service-btn" href="service-details.html">Find A Home <i
-                                class="flaticon-right-arrow"></i></a>
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </div>
 </div>

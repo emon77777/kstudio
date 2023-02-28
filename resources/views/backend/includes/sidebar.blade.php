@@ -148,6 +148,13 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{ route('admin.achievement.index') }}"
+                                class="nav-link {{ request()->is('admin/achievement') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>All Achievements</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ route('admin.feedback.index') }}"
                                 class="nav-link {{ request()->is('admin/feedback') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>

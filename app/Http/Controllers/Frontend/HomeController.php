@@ -5,11 +5,10 @@ namespace App\Http\Controllers\Frontend;
 use App\Models\About;
 use App\Models\Focus;
 use App\Models\Amenity;
-use App\Models\Contact;
-use App\Models\Setting;
 use App\Models\Feedback;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Achievement;
 
 class HomeController extends Controller
 {
@@ -22,9 +21,10 @@ class HomeController extends Controller
     {
         $about_data = About::first();
         $amenity_data = Amenity::get();
+        $achievement_data = Achievement::get();
         $focus_data = Focus::limit(3)->get();
         $feedback_data = Feedback::all();
-        return view('frontend.pages.home.index', compact(['about_data', 'amenity_data', 'focus_data', 'feedback_data']));
+        return view('frontend.pages.home.index', compact(['about_data', 'amenity_data', 'achievement_data', 'focus_data', 'feedback_data']));
     }
 
     /**

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ServiceController extends Controller
 {
@@ -14,8 +16,8 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        return view("backend.pages.service.index");
-
+        $all_service = Service::all();
+        return view("backend.pages.service.index", compact(['all_service']));
     }
 
     /**
@@ -25,7 +27,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        //
+        return view("backend.pages.service.create");
     }
 
     /**
@@ -36,7 +38,21 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make(request()->all(), [
+            'icon' => 'required',
+            'title' => 'required',
+            'detail' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        Service::create([
+            'icon' => $request->input('icon'),
+            'title' => $request->input('title'),
+            'detail' => $request->input('detail')
+        ]);
+        return redirect()->route('admin.service.index')->with('success', 'Core Service Created successfully');
     }
 
     /**

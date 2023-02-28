@@ -17,7 +17,7 @@ class ContactController extends Controller
     {
         $contact = Contact::first();
         
-        return view("backend.pages.contact.index", ['contact'=>$contact]);
+        return view("backend.pages.contact.index", compact(['contact']));
     }
 
     /**
@@ -76,8 +76,6 @@ class ContactController extends Controller
     public function edit($id)
     {
         $contact = Contact::find($id);
-        $contact->email = json_decode($contact->email);
-        $contact->phone = json_decode($contact->phone);
 
         return view("backend.pages.contact.edit", ['contact'=>$contact]);
     }
@@ -94,18 +92,20 @@ class ContactController extends Controller
         
         // validate contact
         $validatedData = $request->validate([
-            'email.*' => 'required|email',
-            'phone.*' => 'required|regex:/^[0-9]{11}$/',
+            'email' => 'required|email',
+            'phone' => 'required|regex:/^[0-9]{11}$/',
             'address' => 'required|string|max:255',
+            'map' => 'required'
         ]);
 
         $email = $validatedData['email'];
         $phone = $validatedData['phone'];
         $address = $validatedData['address'];
+        $map = $validatedData['map'];
 
         Contact::updateOrCreate(
             ['id'=> $id],
-            ['email' => $email, 'phone'=> $phone, 'address' => $address]
+            ['email' => $email, 'phone'=> $phone, 'address' => $address, 'map' => $map]
         );
 
         return redirect('admin/contact');

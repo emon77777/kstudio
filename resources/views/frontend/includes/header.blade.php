@@ -61,7 +61,7 @@
                 <div class="col">
                     <div class="site-logo-wrap">
                         <div class="site-logo">
-                            <a href="index.html"><img src="{{asset("frontend/img/logo-2.png")}}" alt="Logo"></a>
+                            <a href="{{ url('/') }}"><img style="height: 72px !important;" src="{{asset("frontend/img/kstudio_logo.png")}}" alt="Logo"></a>
                         </div>
                         <div class="get-support clearfix d-none">
                             <div class="get-support-icon">
@@ -101,9 +101,6 @@
                                     </li>
                                     <li class="hover_menu">
                                         <a href="{{route('contact.index')}}" @style(['color:var(--ltn__secondary-color)' => request()->is('contact')])>Contact</a>
-                                    </li>
-                                    <li class="special-link">
-                                        <a href="add-listing.html">Add Listing</a>
                                     </li>
                                 </ul>
                             </div>

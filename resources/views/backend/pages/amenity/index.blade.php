@@ -7,11 +7,11 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Core Services</h1>
+                        <h1>Amenities</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Category</a></li>
+                            <li class="breadcrumb-item"><a href="#">Amenity</a></li>
                             <li class="breadcrumb-item active">Show</li>
                         </ol>
                     </div>
@@ -26,8 +26,8 @@
                     <div class="col">
                         <div class="card">
                             <div class="card-header d-flex">
-                                <h3 class="card-title">All Services</h3>
-                                <a href="{{ route('admin.service.create') }}"
+                                <h3 class="card-title">All Amenity</h3>
+                                <a href="{{ route('admin.amenity.create') }}"
                                     class="btn btn-primary btn-sm ml-auto">Create</a>
                             </div>
                             <!-- /.card-header -->
@@ -39,17 +39,15 @@
                                                 <th style="width: 10px">#</th>
                                                 <th class="col-4">Icon</th>
                                                 <th class="col-4">Title</th>
-                                                <th class="col-4">Detail</th>
                                                 <th class="col-4">Action</th>
                                             </tr>
                                         </thead>
-                                        <tbody id="all-service">
-                                            @foreach ($all_service as $key=>$each_service)
+                                        <tbody id="all-amenity">
+                                            @foreach ($all_amenity as $key=>$each_amenity)
                                                 <tr>
                                                     <td>{{ $key+1 }}</td>
-                                                    <td>{{ $each_service['icon'] }}</td>
-                                                    <td>{{ $each_service['title'] }}</td>
-                                                    <td>{{ $each_service['detail'] }}</td>
+                                                    <td>{{ $each_amenity['icon'] }}</td>
+                                                    <td>{{ $each_amenity['title'] }}</td>
                                                     <td>
                                                         Edit | Delete
                                                     </td>

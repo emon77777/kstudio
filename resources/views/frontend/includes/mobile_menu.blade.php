@@ -2,7 +2,7 @@
     <div class="ltn__utilize-menu-inner ltn__scrollbar">
         <div class="ltn__utilize-menu-head">
             <div class="site-logo">
-                <a href="index.html"><img src="{{asset("frontend/img/logo.png")}}" alt="Logo"></a>
+                <a {{ url('/') }}><img src="{{asset("frontend/img/logo.png")}}" alt="Logo"></a>
             </div>
             <button class="ltn__utilize-close">×</button>
         </div>

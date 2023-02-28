@@ -45,19 +45,7 @@
                         Email field cannot be empty!
                       </div>
                       @endif
-                      @foreach($contact->email as $email)
-                        @if ($loop->first)
-                          <div class="d-flex mb-2 ">
-                            <input type="email" class="form-control form-control-sm" name="email[]" placeholder="Enter email" value="{{ $email }}">
-                            <button type="button" class="btn btn-success btn-sm " id="add-email-btn"><i class="fas fa-plus"></i></button>
-                          </div>
-                        @else
-                        <div class="d-flex mb-2">
-                          <input type="email" class="form-control form-control-sm" name="email[]" id="email" placeholder="Enter email" value="{{ $email }}">
-                          <button type="button" class="btn btn-danger btn-sm remove-email-input" ><i class="fas fa-times"></i></button>
-                        </div>
-                        @endif
-                      @endforeach
+                      <input type="email" class="form-control form-control-sm" name="email" placeholder="Enter email" value="{{ $contact->email }}">
                     </div>
                     
                     <div class="form-group col-md-4 phone-container">
@@ -67,19 +55,7 @@
                         Please enter valid phone
                       </div>
                       @endif
-                      @foreach($contact->phone as $phone)
-                        @if($loop->first)
-                          <div class="d-flex mb-2">
-                            <input type="text" class="form-control form-control-sm" name="phone[]" id="phone" placeholder="Enter phone" value="{{ $phone }}">
-                            <button type="button" class="btn btn-success btn-sm" id="add-phone-btn"><i class="fas fa-plus"></i></button>
-                          </div>
-                        @else
-                          <div class="d-flex mb-2">
-                            <input type="number" class="form-control form-control-sm" name="phone[]" id="phone" placeholder="Enter phone" value="{{ $phone }}">
-                            <button type="button" class="btn btn-danger btn-sm remove-phone-input" ><i class="fas fa-times"></i></button>
-                          </div>
-                        @endif
-                      @endforeach
+                      <input type="text" class="form-control form-control-sm" name="phone" id="phone" placeholder="Enter phone" value="{{ $contact->phone }}">
                     </div>
                     <div class="form-group col-md-4">
                       <label for="address">Address</label>

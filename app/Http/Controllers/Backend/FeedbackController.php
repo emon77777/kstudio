@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\About;
+use App\Models\Feedback;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
-class AboutController extends Controller
+class FeedbackController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,8 @@ class AboutController extends Controller
      */
     public function index()
     {
-        $about_info = About::first();
-        return view("backend.pages.about.index", compact('about_info'));
+        $all_feedback = Feedback::all();
+        return view("backend.pages.feedback.index", compact(['all_feedback']));
     }
 
     /**
@@ -28,7 +28,7 @@ class AboutController extends Controller
      */
     public function create()
     {
-        //
+        return view("backend.pages.feedback.create");
     }
 
     /**
@@ -39,7 +39,29 @@ class AboutController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make(request()->all(), [
+            'name' => 'required',
+            'title' => 'required',
+            'detail' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        if (!empty($_FILES['image']['name'])) {
+            $feedback_photo_name = 'feedback_photo_' . time() . '.' . pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+            $feedbackImage = Storage::disk('public')->putFileAs('feedback', $request->file('image'), $feedback_photo_name);
+        } else {
+            $feedbackImage = 'demo/demo_img.png';
+        }
+
+        Feedback::create([
+            'image' => $feedbackImage,
+            'name' => $request->input('name'),
+            'title' => $request->input('title'),
+            'detail' => $request->input('detail')
+        ]);
+        return redirect()->route('admin.feedback.index')->with('success', 'Feedback Created successfully');
     }
 
     /**
@@ -73,29 +95,7 @@ class AboutController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validator = Validator::make(request()->all(), [
-            'text' => 'required',
-            'detail' => 'required'
-        ]);
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-        $about_info = About::find($id);
-
-        if (!empty($_FILES['image']['name'])) {
-            $about_photo_name = 'about_photo_' . time() . '.' . pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
-            Storage::disk('public')->delete($about_info->image);
-            $aboutImage = Storage::disk('public')->putFileAs('about', $request->file('image'), $about_photo_name);
-        } else {
-            $aboutImage = $about_info->image;
-        }
-
-        $about_info->update([
-            'image' => $aboutImage,
-            'text' => $request->input('text'),
-            'detail' => $request->input('detail')
-        ]);
-        return redirect()->route('admin.about.index')->with('success', 'About Updated successfully');
+        //
     }
 
     /**

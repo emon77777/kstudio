@@ -1,113 +1,99 @@
 @extends('backend.layout.master')
 
 @section('content')
-<div class="content-wrapper" style="min-height: 2080.12px;">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Your Contacts</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Contact</a></li>
-              <li class="breadcrumb-item active">Show</li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Contacts</h3>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-sm table-bordered">
-                        <thead>
-                          <tr>
-                            <th style="width: 10px">#</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th style="">Address</th>
-                            <th colspan="2">Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          @php
-                              $sl = 1;
-                          @endphp
-                          
-                          <tr>
-                            <td>{{ $sl++ }}</td>
-                            <td>
-                              @foreach(json_decode($contact->email) as $email)
-                              <div>
-                                {{ $email }}
-                              </div>
-                              @endforeach
-                            </td>
-                            <td>
-                              @foreach(json_decode($contact->phone) as $phone)
-                              <div>
-                                {{ $phone }}
-                              </div>
-                              @endforeach
-                            </td>
-                            <td>{{ $contact->address }}</td>
-                            <td class="text-center"><a href="{{route('admin.contact.edit', $contact->id)}}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a></td>
-                            {{-- <td class="text-center"><button type="button" data-toggle="modal" data-target="#contact-delete" class="btn btn-danger btn-sm contact-del-btn" value="{{ $contact->id }}"><i class="fas fa-trash"></i></button></td> --}}
-                          </tr>
-                          
-                        </tbody>
-                      </table>
+    <div class="content-wrapper" style="min-height: 1345.31px;">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Contact</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Contacts</a></li>
+                            <li class="breadcrumb-item active">Edit</li>
+                        </ol>
+                    </div>
                 </div>
-              </div>
-             
-            </div>
-            <!-- /.card -->
-          </div>
-          <!-- /.col -->
-        </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
+            </div><!-- /.container-fluid -->
+        </section>
 
-    {{-- Contact Delete Modal --}}
-    <div class="modal fade" id="contact-delete" style="display: none;" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">Confirm Delete</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <p>Are you sure to delete this contact!</p>
-          </div>
-          <div class="modal-footer justify-content-between">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            <form id="deleteContact" action="" method="POST">
-              @csrf
-              @method('DELETE')
-              <button type="submit" class="btn btn-danger">Delete</button>
-            </form>
-          </div>
-        </div>
-        <!-- /.modal-content -->
-      </div>
-      <!-- /.modal-dialog -->
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- left column -->
+                    <div class="col">
+                        <!-- general form elements -->
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">Edit Contact</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <!-- form start -->
+                            <form action="{{ route('admin.contact.update', $contact->id) }}" method="post">
+                                @csrf
+                                @method('PUT')
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="form-group col-md-6 email-container">
+                                            <label for="">Email</label>
+                                            @if ($errors->first('email'))
+                                                <div class="text-danger py-0 px-1 mb-1" role="alert">
+                                                    Email field cannot be empty!
+                                                </div>
+                                            @endif
+                                            <input type="email" class="form-control" name="email"
+                                                placeholder="Enter email" value="{{ $contact->email }}">
+                                        </div>
+
+                                        <div class="form-group col-md-6 phone-container">
+                                            <label for="phone">Phone</label>
+                                            @if ($errors->first('phone.*'))
+                                                <div class=" text-danger py-0 px-1 mb-1">
+                                                    Please enter valid phone
+                                                </div>
+                                            @endif
+                                            <input type="text" class="form-control" name="phone"
+                                                id="phone" placeholder="Enter phone" value="{{ $contact->phone }}">
+                                        </div>
+                                        <div class="form-group col-12">
+                                            <label for="address">Address</label>
+                                            @if ($errors->first('address'))
+                                                <div class="text-danger py-0 px-1 mb-1">
+                                                    Address field cannot be empty
+                                                </div>
+                                            @endif
+                                            <textarea class="form-control" id="address" rows="5" name="address" >{{ $contact->address }}</textarea>
+                                        </div>
+                                        <div class="form-group col-12">
+                                            <label for="map">Map Link</label>
+                                            @if ($errors->first('map'))
+                                                <div class="text-danger py-0 px-1 mb-1">
+                                                    Map field cannot be empty
+                                                </div>
+                                            @endif
+                                            <textarea class="form-control" id="map" rows="5" name="map" >{{ $contact->map }}</textarea>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- /.card-body -->
+
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary">Update</button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.card -->
+
+                    </div>
+                    <!--/.col (left) -->
+                </div>
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
     </div>
-  </div>
-  
 @endsection

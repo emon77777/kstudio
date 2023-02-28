@@ -3,12 +3,11 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\About;
+use App\Models\Amenity;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
-class AboutController extends Controller
+class AmenityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +16,8 @@ class AboutController extends Controller
      */
     public function index()
     {
-        $about_info = About::first();
-        return view("backend.pages.about.index", compact('about_info'));
+        $all_amenity = Amenity::all();
+        return view("backend.pages.amenity.index", compact(['all_amenity']));
     }
 
     /**
@@ -28,7 +27,7 @@ class AboutController extends Controller
      */
     public function create()
     {
-        //
+        return view("backend.pages.amenity.create");
     }
 
     /**
@@ -39,7 +38,19 @@ class AboutController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make(request()->all(), [
+            'icon' => 'required',
+            'title' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        Amenity::create([
+            'icon' => $request->input('icon'),
+            'title' => $request->input('title')
+        ]);
+        return redirect()->route('admin.amenity.index')->with('success', 'Amenity Created successfully');
     }
 
     /**
@@ -73,29 +84,7 @@ class AboutController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validator = Validator::make(request()->all(), [
-            'text' => 'required',
-            'detail' => 'required'
-        ]);
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-        $about_info = About::find($id);
-
-        if (!empty($_FILES['image']['name'])) {
-            $about_photo_name = 'about_photo_' . time() . '.' . pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
-            Storage::disk('public')->delete($about_info->image);
-            $aboutImage = Storage::disk('public')->putFileAs('about', $request->file('image'), $about_photo_name);
-        } else {
-            $aboutImage = $about_info->image;
-        }
-
-        $about_info->update([
-            'image' => $aboutImage,
-            'text' => $request->input('text'),
-            'detail' => $request->input('detail')
-        ]);
-        return redirect()->route('admin.about.index')->with('success', 'About Updated successfully');
+        //
     }
 
     /**

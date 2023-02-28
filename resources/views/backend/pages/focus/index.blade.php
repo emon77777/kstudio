@@ -7,11 +7,11 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Core Services</h1>
+                        <h1>Our Focus</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Category</a></li>
+                            <li class="breadcrumb-item"><a href="#">Focus</a></li>
                             <li class="breadcrumb-item active">Show</li>
                         </ol>
                     </div>
@@ -26,8 +26,8 @@
                     <div class="col">
                         <div class="card">
                             <div class="card-header d-flex">
-                                <h3 class="card-title">All Services</h3>
-                                <a href="{{ route('admin.service.create') }}"
+                                <h3 class="card-title">All Focus Data</h3>
+                                <a href="{{ route('admin.focus.create') }}"
                                     class="btn btn-primary btn-sm ml-auto">Create</a>
                             </div>
                             <!-- /.card-header -->
@@ -43,13 +43,13 @@
                                                 <th class="col-4">Action</th>
                                             </tr>
                                         </thead>
-                                        <tbody id="all-service">
-                                            @foreach ($all_service as $key=>$each_service)
+                                        <tbody id="all-focus">
+                                            @foreach ($all_focus as $key=>$each_focus)
                                                 <tr>
                                                     <td>{{ $key+1 }}</td>
-                                                    <td>{{ $each_service['icon'] }}</td>
-                                                    <td>{{ $each_service['title'] }}</td>
-                                                    <td>{{ $each_service['detail'] }}</td>
+                                                    <td>{{ $each_focus['icon'] }}</td>
+                                                    <td>{{ $each_focus['title'] }}</td>
+                                                    <td>{{ $each_focus['detail'] }}</td>
                                                     <td>
                                                         Edit | Delete
                                                     </td>

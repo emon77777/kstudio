@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\About;
 use Illuminate\Http\Request;
 
 class AboutController extends Controller
@@ -14,8 +15,8 @@ class AboutController extends Controller
      */
     public function index()
     {
-        // Display about page
-        return view("frontend.pages.about.index");
+        $about_data = About::first();
+        return view("frontend.pages.about.index", compact(['about_data']));
     }
 
     /**

@@ -1,7 +1,7 @@
 
 <header class="ltn__header-area ltn__header-5 ltn__header-logo-and-mobile-menu-in-mobile ltn__header-logo-and-mobile-menu ltn__header-transparent-- gradient-color-2-- bg-black">
     <!-- ltn__header-top-area start -->
-    <div class="ltn__header-top-area top-area-color-white d-none">
+    {{-- <div class="ltn__header-top-area top-area-color-white d-none">
         <div class="container">
             <div class="row">
                 <div class="col-md-7">
@@ -51,7 +51,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- ltn__header-top-area end -->
     
     <!-- ltn__header-middle-area start -->
@@ -61,7 +61,7 @@
                 <div class="col">
                     <div class="site-logo-wrap">
                         <div class="site-logo">
-                            <a href="{{ url('/') }}"><img style="height: 72px !important;" src="{{asset("frontend/img/kstudio_logo.png")}}" alt="Logo"></a>
+                            <a href="{{ url('/') }}"><img style="height: 72px !important;" src="{{ asset('storage/' . $setting_data['brand_logo']) }}" alt="Logo"></a>
                         </div>
                         <div class="get-support clearfix d-none">
                             <div class="get-support-icon">

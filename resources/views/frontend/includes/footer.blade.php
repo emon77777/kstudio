@@ -161,7 +161,7 @@
                 <div class="col-xl-3 col-md-6 col-sm-12 col-12">
                     <div class="footer-widget footer-newsletter-widget">
                         {{-- <h4 class="footer-title">Map Location</h4> --}}
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3652.8134733493607!2d90.41791169999999!3d23.71835415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8539c8e1dd7%3A0xf454a7a2dc22ba5!2sWari%2C%20Dhaka!5e0!3m2!1sen!2sbd!4v1688847422592!5m2!1sen!2sbd" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe src="{{ $contact_data->map}}" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>

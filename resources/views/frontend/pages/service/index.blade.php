@@ -11,7 +11,7 @@
                     <h1 class="page-title">What We Do</h1>
                     <div class="ltn__breadcrumb-list">
                         <ul>
-                            <li><a href="{{ url('/') }}><span class="ltn__secondary-color"><i
+                            <li><a href="{{ url('/') }}"><span class="ltn__secondary-color"><i
                                             class="fas fa-home"></i></span> Home</a></li>
                             <li>Service</li>
                         </ul>
@@ -29,26 +29,18 @@
         <div class="row">
             <div class="col-lg-5 align-self-center">
                 <div class="about-us-img-wrap ltn__img-shape-left  about-img-left">
-                    <img src="{{asset("frontend/img/service/11.jpg")}}" alt="Image">
+                    <img src="{{ asset('storage/' . $about_data['image']) }}" alt="Image">
                 </div>
             </div>
             <div class="col-lg-7 align-self-center">
                 <div class="about-us-info-wrap">
                     <div class="section-title-area ltn__section-title-2--- mb-20">
                         <h6 class="section-subtitle section-subtitle-2 ltn__secondary-color">About Us</h6>
-                        <h1 class="section-title">The Leading Real Estate
-                            Rental Marketplace<span>.</span></h1>
-                        <p>Over 39,000 people work for us in more than 70 countries all over the
-                            This breadth of global coverage, combined with specialist services</p>
-                    </div>
-                    <div class="about-us-info-wrap-inner about-us-info-devide---">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                            voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                        <h1 class="section-title">{{ $about_data['text'] }}<span>.</span></h1>
+                        <p>{{ $about_data['detail'] }}</p>
                     </div>
                     <div class="btn-wrapper animated">
-                        <a href="about.html" class="theme-btn-1 btn btn-effect-1 text-uppercase">About Us</a>
+                        <a href="{{ route('about.index') }}" class="theme-btn-1 btn btn-effect-1 text-uppercase">About Us</a>
                     </div>
                 </div>
             </div>
@@ -69,90 +61,23 @@
             </div>
         </div>
         <div class="row  justify-content-center">
-            <div class="col-lg-4 col-sm-6 col-12">
-                <div class="ltn__feature-item ltn__feature-item-6 text-center bg-white  box-shadow-1">
-                    <div class="ltn__feature-icon">
-                        <span><i class="flaticon-house"></i></span>
-                        <!-- <img src="img/icons/icon-img/21.png" alt="#"> -->
-                    </div>
-                    <div class="ltn__feature-info">
-                        <h3><a href="service-details.html">Property Management</a></h3>
-                        <p>over 1 million+ homes for sale available on the website, we can match you with a house you
-                            will want to call home.</p>
-                        <!-- <a class="ltn__service-btn" href="service-details.html">Find A Home <i class="flaticon-right-arrow"></i></a> -->
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 col-12">
-                <div class="ltn__feature-item ltn__feature-item-6 text-center bg-white  box-shadow-1">
-                    <div class="ltn__feature-icon">
-                        <span><i class="flaticon-mortgage"></i></span>
-                        <!-- <img src="img/icons/icon-img/21.png" alt="#"> -->
-                    </div>
-                    <div class="ltn__feature-info">
-                        <h3><a href="service-details.html">Mortgage Service</a></h3>
-                        <p>over 1 million+ homes for sale available on the website, we can match you with a house you
-                            will want to call home.</p>
-                        <!-- <a class="ltn__service-btn" href="service-details.html">Find A Home <i class="flaticon-right-arrow"></i></a> -->
+            
+            @foreach ($service_data as $each_service)
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="ltn__feature-item ltn__feature-item-6 text-center bg-white  box-shadow-1">
+                        <div class="ltn__feature-icon">
+                            <span><i class="{{ $each_service['icon'] }}"></i></span>
+                            <!-- <img src="img/icons/icon-img/21.png" alt="#"> -->
+                        </div>
+                        <div class="ltn__feature-info">
+                            <h3><a>{{ $each_service['title'] }}</a></h3>
+                            <p>{{ $each_service['detail'] }}</p>
+                            <!-- <a class="ltn__service-btn">Find A Home <i class="flaticon-right-arrow"></i></a> -->
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 col-12">
-                <div class="ltn__feature-item ltn__feature-item-6 text-center bg-white  box-shadow-1">
-                    <div class="ltn__feature-icon">
-                        <span><i class="flaticon-operator"></i></span>
-                        <!-- <img src="img/icons/icon-img/21.png" alt="#"> -->
-                    </div>
-                    <div class="ltn__feature-info">
-                        <h3><a href="service-details.html">Consulting Service</a></h3>
-                        <p>over 1 million+ homes for sale available on the website, we can match you with a house you
-                            will want to call home.</p>
-                        <!-- <a class="ltn__service-btn" href="service-details.html">Find A Home <i class="flaticon-right-arrow"></i></a> -->
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 col-12">
-                <div class="ltn__feature-item ltn__feature-item-6 text-center bg-white  box-shadow-1">
-                    <div class="ltn__feature-icon">
-                        <span><i class="flaticon-house-1"></i></span>
-                        <!-- <img src="img/icons/icon-img/21.png" alt="#"> -->
-                    </div>
-                    <div class="ltn__feature-info">
-                        <h3><a href="service-details.html">Home Buying</a></h3>
-                        <p>over 1 million+ homes for sale available on the website, we can match you with a house you
-                            will want to call home.</p>
-                        <!-- <a class="ltn__service-btn" href="service-details.html">Find A Home <i class="flaticon-right-arrow"></i></a> -->
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 col-12">
-                <div class="ltn__feature-item ltn__feature-item-6 text-center bg-white  box-shadow-1">
-                    <div class="ltn__feature-icon">
-                        <span><i class="flaticon-house-3"></i></span>
-                        <!-- <img src="img/icons/icon-img/21.png" alt="#"> -->
-                    </div>
-                    <div class="ltn__feature-info">
-                        <h3><a href="service-details.html">Home Selling</a></h3>
-                        <p>over 1 million+ homes for sale available on the website, we can match you with a house you
-                            will want to call home.</p>
-                        <!-- <a class="ltn__service-btn" href="service-details.html">Find A Home <i class="flaticon-right-arrow"></i></a> -->
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 col-12">
-                <div class="ltn__feature-item ltn__feature-item-6 text-center bg-white  box-shadow-1">
-                    <div class="ltn__feature-icon">
-                        <span><i class="flaticon-official-documents"></i></span>
-                        <!-- <img src="img/icons/icon-img/21.png" alt="#"> -->
-                    </div>
-                    <div class="ltn__feature-info">
-                        <h3><a href="service-details.html">Escrow Services</a></h3>
-                        <p>over 1 million+ homes for sale available on the website, we can match you with a house you
-                            will want to call home.</p>
-                        <!-- <a class="ltn__service-btn" href="service-details.html">Find A Home <i class="flaticon-right-arrow"></i></a> -->
-                    </div>
-                </div>
-            </div>
+            @endforeach
+            
         </div>
     </div>
 </div>
@@ -170,7 +95,7 @@
                         <p>We can help you realize your dream of a new home</p>
                     </div>
                     <div class="btn-wrapper">
-                        <a class="btn btn-effect-3 btn-white" href="contact.html">Contact Us <i
+                        <a class="btn btn-effect-3 btn-white" href="{{ route('contact.index') }}">Contact Us <i
                                 class="icon-next"></i></a>
                     </div>
                 </div>

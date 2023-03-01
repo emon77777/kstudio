@@ -3,7 +3,7 @@
 @section('content')
 
 <!-- BREADCRUMB AREA START -->
-<div class="ltn__breadcrumb-area text-left bg-overlay-white-30 bg-image " data-bs-bg="{{asset("frontend/img/bg/14.jpg")}}">
+<div class="ltn__breadcrumb-area text-left bg-overlay-white-30 bg-image " data-bs-bg="{{asset('storage/' . $setting_data['contact_banner'])}}">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -80,32 +80,22 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="input-item">
-                                    <select class="nice-select">
-                                        <option>Select Service Type</option>
-                                        <option>Property Management </option>
-                                        <option>Mortgage Service </option>
-                                        <option>Consulting Service</option>
-                                        <option>Home Buying</option>
-                                        <option>Home Selling</option>
-                                        <option>Escrow Services</option>
-                                    </select>
+                                <div class="input-item input-item-phone ltn__custom-icon">
+                                    <input type="text" name="phone" placeholder="Enter phone number">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="input-item input-item-phone ltn__custom-icon">
-                                    <input type="text" name="phone" placeholder="Enter phone number">
+                                    <input type="text" name="Subject" placeholder="Enter Topic Name">
                                 </div>
                             </div>
                         </div>
                         <div class="input-item input-item-textarea ltn__custom-icon">
                             <textarea name="message" placeholder="Enter message"></textarea>
                         </div>
-                        <p><label class="input-info-save mb-0"><input type="checkbox" name="agree"> Save my name, email,
-                                and website in this browser for the next time I comment.</label></p>
-                        <div class="btn-wrapper mt-0">
-                            <button class="btn theme-btn-1 btn-effect-1 text-uppercase" type="submit">get a free
-                                service</button>
+                        {{-- <p><label class="input-info-save mb-0"><input type="checkbox" name="agree"> Save my name, email, and website in this browser for the next time I comment.</label></p> --}}
+                        <div class="btn-wrapper mt-0 text-center">
+                            <button class="btn theme-btn-1 btn-effect-1 text-uppercase" type="submit">Submit</button>
                         </div>
                         <p class="form-messege mb-0 mt-20"></p>
                     </form>
@@ -120,8 +110,7 @@
 <div class="google-map mb-120">
 
     <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9334.271551495209!2d-73.97198251485975!3d40.668170674982946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25b0456b5a2e7%3A0x68bdf865dda0b669!2sBrooklyn%20Botanic%20Garden%20Shop!5e0!3m2!1sen!2sbd!4v1590597267201!5m2!1sen!2sbd"
-        width="100%" height="100%" frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        src="{{ $contact_data->map }}" width="100%" height="100%" frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
 </div>
 <!-- GOOGLE MAP AREA END -->
@@ -138,7 +127,7 @@
                         <p>We can help you realize your dream of a new home</p>
                     </div>
                     <div class="btn-wrapper">
-                        <a class="btn btn-effect-3 btn-white" href="contact.html">Contact Us <i
+                        <a class="btn btn-effect-3 btn-white" href="{{ route('contact.index') }}">Contact Us <i
                                 class="icon-next"></i></a>
                     </div>
                 </div>

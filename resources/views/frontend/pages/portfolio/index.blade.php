@@ -31,13 +31,12 @@
             <div class="col-lg-12">
                 <div class="ltn__gallery-menu">
                     <div class="ltn__gallery-filter-menu portfolio-filter text-uppercase mb-50">
+                        
                         <button data-filter="*" class="active">all</button>
                         @foreach ($categories as $category)
                         <button data-filter=".filter_category_{{$category->id}}">{{$category->name}}</button>
                         @endforeach
                         
-                        <button data-filter=".filter_category_1">Retail</button>
-                        <button data-filter=".filter_category_3">Condos</button>
                     </div>
                 </div>
             </div>
@@ -50,7 +49,7 @@
 
             @foreach($portfolio_data as $portfolio)
             <!-- gallery-item -->
-            <div class="ltn__gallery-item filter_category_{{$portfolio->category->id}} col-md-4 col-sm-6 col-12">
+            <div class="ltn__gallery-item @if(isset($portfolio->category->id)) filter_category_{{$portfolio->category->id}} @else filter_category_1 @endif col-md-4 col-sm-6 col-12">
                 <div class="ltn__gallery-item-inner">
                     <div class="ltn__gallery-item-img">
                         <a href="{{asset("storage/".$portfolio->image)}}" data-rel="lightcase:myCollection">
@@ -61,14 +60,14 @@
                         </a>
                     </div>
                     <div class="ltn__gallery-item-info">
-                        <h4><a href="portfolio-details.html">{{$portfolio->title}} </a></h4>
+                        <h4><a>{{$portfolio->title}} </a></h4>
                         <p>{{$portfolio->subtitle}}</p>
                     </div>
                 </div>
             </div>
             @endforeach
-            <!-- gallery-item -->
-            <div class="ltn__gallery-item filter_category_2 col-md-4 col-sm-6 col-12">
+
+            {{-- <div class="ltn__gallery-item filter_category_2 col-md-4 col-sm-6 col-12">
                 <div class="ltn__gallery-item-inner">
                     <div class="ltn__gallery-item-img">
                         <a href="#ltn__inline_description_1" data-rel="lightcase:myCollection">
@@ -84,7 +83,6 @@
                     </div>
                 </div>
             </div>
-            <!-- gallery-item -->
             <div class="ltn__gallery-item filter_category_1 col-md-4 col-sm-6 col-12">
                 <div class="ltn__gallery-item-inner">
                     <div class="ltn__gallery-item-img">
@@ -101,7 +99,6 @@
                     </div>
                 </div>
             </div>
-            <!-- gallery-item -->
             <div class="ltn__gallery-item filter_category_3 col-md-4 col-sm-6 col-12">
                 <div class="ltn__gallery-item-inner">
                     <div class="ltn__gallery-item-img">
@@ -118,7 +115,6 @@
                     </div>
                 </div>
             </div>
-            <!-- gallery-item -->
             <div class="ltn__gallery-item filter_category_2 col-md-4 col-sm-6 col-12">
                 <div class="ltn__gallery-item-inner">
                     <div class="ltn__gallery-item-img">
@@ -135,7 +131,6 @@
                     </div>
                 </div>
             </div>
-            <!-- gallery-item -->
             <div class="ltn__gallery-item filter_category_1 col-md-4 col-sm-6 col-12">
                 <div class="ltn__gallery-item-inner">
                     <div class="ltn__gallery-item-img">
@@ -153,7 +148,6 @@
                     </div>
                 </div>
             </div>
-            <!-- gallery-item -->
             <div class="ltn__gallery-item filter_category_3 col-md-4 col-sm-6 col-12">
                 <div class="ltn__gallery-item-inner">
                     <div class="ltn__gallery-item-img">
@@ -171,7 +165,6 @@
                     </div>
                 </div>
             </div>
-            <!-- gallery-item -->
             <div class="ltn__gallery-item filter_category_2 col-md-4 col-sm-6 col-12">
                 <div class="ltn__gallery-item-inner">
                     <div class="ltn__gallery-item-img">
@@ -188,7 +181,6 @@
                     </div>
                 </div>
             </div>
-            <!-- gallery-item -->
             <div class="ltn__gallery-item filter_category_1 col-md-4 col-sm-6 col-12">
                 <div class="ltn__gallery-item-inner">
                     <div class="ltn__gallery-item-img">
@@ -205,7 +197,6 @@
                     </div>
                 </div>
             </div>
-            <!-- gallery-item -->
             <div class="ltn__gallery-item filter_category_3 col-md-4 col-sm-6 col-12">
                 <div class="ltn__gallery-item-inner">
                     <div class="ltn__gallery-item-img">
@@ -222,7 +213,6 @@
                     </div>
                 </div>
             </div>
-            <!-- gallery-item -->
             <div class="ltn__gallery-item filter_category_2 col-md-4 col-sm-6 col-12">
                 <div class="ltn__gallery-item-inner">
                     <div class="ltn__gallery-item-img">
@@ -239,7 +229,6 @@
                     </div>
                 </div>
             </div>
-            <!-- gallery-item -->
             <div class="ltn__gallery-item filter_category_1 col-md-4 col-sm-6 col-12">
                 <div class="ltn__gallery-item-inner">
                     <div class="ltn__gallery-item-img">
@@ -255,10 +244,11 @@
                         <p>Web Design & Development, Branding</p>
                     </div>
                 </div>
-            </div>
+            </div> --}}
+
         </div>
 
-        <div id="ltn__inline_description_1" style="display: none;">
+        {{-- <div id="ltn__inline_description_1" style="display: none;">
             <h4 class="first">This content comes from a hidden element on that page</h4>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis mi eu elit tempor facilisis id et
                 neque. Nulla sit amet sem sapien. Vestibulum imperdiet porta ante ac ornare. Nulla et lorem eu nibh
@@ -267,11 +257,11 @@
             <p>Vivamus fringilla congue laoreet. Quisque ultrices sodales orci, quis rhoncus justo auctor in. Phasellus
                 dui eros, bibendum eu feugiat ornare, faucibus eu mi. Nunc aliquet tempus sem, id aliquam diam varius
                 ac. Maecenas nisl nunc, molestie vitae eleifend vel.</p>
-        </div>
+        </div> --}}
 
-        <div class="btn-wrapper text-center">
+        {{-- <div class="btn-wrapper text-center">
             <a href="#" class="btn btn-transparent btn-effect-1 btn-border">LOAD MORE +</a>
-        </div>
+        </div> --}}
 
         <!-- pagination start -->
         <!-- 

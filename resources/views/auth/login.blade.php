@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Log in</title>
+  <title>KStudio | Log in</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -17,7 +17,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b>Admin</b>LTE</a>
+    <a href="{{ route('login') }}"><b>KSTUDIO</b> 2018</a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
@@ -72,7 +72,7 @@
 
       <p class="mb-1">
         @if (Route::has('password.request'))
-          <a href="{{ route('password.request') }}">I forgot my password</a>
+          {{-- <a href="{{ route('password.request') }}">I forgot my password</a> --}}
         @endif
       </p>
       {{-- <p class="mb-0">

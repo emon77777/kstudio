@@ -63,13 +63,13 @@
                         <div class="site-logo">
                             <a href="{{ url('/') }}"><img style="height: 72px !important;" src="{{ asset('storage/' . $setting_data['brand_logo']) }}" alt="Logo"></a>
                         </div>
-                        <div class="get-support clearfix d-none">
+                        <div class="get-support clearfix">
                             <div class="get-support-icon">
                                 <i class="icon-call"></i>
                             </div>
                             <div class="get-support-info">
-                                <h6>Get Support</h6>
-                                <h4><a href="tel:+123456789">123-456-789-10</a></h4>
+                                <h6 style="color:white;">Get Support</h6>
+                                <h4><a style="color:white;" href="tel:{{ $contact_data->phone}}">{{ $contact_data->phone}}</a></h4>
                             </div>
                         </div>
                     </div>
@@ -80,19 +80,19 @@
                             <div class="ltn__main-menu">
                                 <ul>
                                     <li class="hover_menu">
-                                        <a href="{{route('index')}}" @style(['color:var(--ltn__secondary-color)' => request()->is('/')])>Home</a>
+                                        <a href="{{ route('index') }}" @style(['color:var(--ltn__secondary-color)' => request()->is('/')])>Home</a>
                                     </li>
                                     <li class="hover_menu">
-                                        <a href="{{route('about.index')}}" @style(['color:var(--ltn__secondary-color)' => request()->is('about')])>About</a>
+                                        <a href="{{ route('about.index') }}" @style(['color:var(--ltn__secondary-color)' => request()->is('about')])>About</a>
                                     </li>
                                     <li class="hover_menu text-dark">
-                                        <a href="{{route('service.index')}}" @style(['color:var(--ltn__secondary-color)' => request()->is('service')])>Service</a>
+                                        <a href="{{ route('service.index') }}" @style(['color:var(--ltn__secondary-color)' => request()->is('service')])>Service</a>
                                     </li>
                                     <li class="hover_menu text-dark">
-                                        <a href="{{route('portfolio.index')}}" @style(['color:var(--ltn__secondary-color)' => request()->is('portfolio')])>Portfolio</a>
+                                        <a href="{{ route('portfolio.index') }}" @style(['color:var(--ltn__secondary-color)' => request()->is('portfolio')])>Portfolio</a>
                                     </li>
                                     <li class="hover_menu">
-                                        <a href="{{route('contact.index')}}" @style(['color:var(--ltn__secondary-color)' => request()->is('contact')])>Contact</a>
+                                        <a href="{{ route('contact.index') }}" @style(['color:var(--ltn__secondary-color)' => request()->is('contact')])>Contact</a>
                                     </li>
                                 </ul>
                             </div>

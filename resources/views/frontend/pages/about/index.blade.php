@@ -3,7 +3,7 @@
 @section('content')
 
 <!-- BREADCRUMB AREA START -->
-<div class="ltn__breadcrumb-area text-left bg-overlay-white-30 bg-image" data-bs-bg="{{asset("frontend/img/bg/14.jpg")}}">
+<div class="ltn__breadcrumb-area text-left bg-overlay-white-30 bg-image" data-bs-bg="{{asset('storage/' . $setting_data['about_banner'])}}">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -29,40 +29,27 @@
         <div class="row">
             <div class="col-lg-6 align-self-center">
                 <div class="about-us-img-wrap about-img-left">
-                    <img src="{{asset("frontend/img/others/13.png")}}" alt="About Us Image">
+                    <img src="{{ asset('storage/' . $about_data['image']) }}" alt="About Us Image">
                 </div>
             </div>
             <div class="col-lg-6 align-self-center">
                 <div class="about-us-info-wrap">
                     <div class="section-title-area ltn__section-title-2--- mb-20">
                         <h6 class="section-subtitle section-subtitle-2 ltn__secondary-color">About Us</h6>
-                        <h1 class="section-title">The Leading Real Estate
-                            Rental Marketplace<span>.</span></h1>
-                        <p>Over 39,000 people work for us in more than 70 countries all over the
-                            This breadth of global coverage, combined with specialist services</p>
+                        <h1 class="section-title">{{ $about_data['text'] }}<span>.</span></h1>
+                        <p>{{ $about_data['detail'] }}</p>
                     </div>
                     <ul class="ltn__list-item-half clearfix">
-                        <li>
-                            <i class="flaticon-home-2"></i>
-                            Smart Home Design
-                        </li>
-                        <li>
-                            <i class="flaticon-mountain"></i>
-                            Beautiful Scene Around
-                        </li>
-                        <li>
-                            <i class="flaticon-heart"></i>
-                            Exceptional Lifestyle
-                        </li>
-                        <li>
-                            <i class="flaticon-secure"></i>
-                            Complete 24/7 Security
-                        </li>
-                    </ul>
-                    <div class="ltn__callout bg-overlay-theme-05  mt-30">
+                        @foreach ($amenity_data as $each_amenity)
+                            <li>
+                                <i class="{{ $each_amenity['icon'] }}"></i>
+                                {{ $each_amenity['title'] }}
+                            </li>
+                        @endforeach
+                    {{-- <div class="ltn__callout bg-overlay-theme-05  mt-30">
                         <p>"Enimad minim veniam quis nostrud exercitation <br>
                             llamco laboris. Lorem ipsum dolor sit amet" </p>
-                    </div>
+                    </div> --}}
                     <div class="btn-wrapper animated">
                         <a href="service.html" class="theme-btn-1 btn btn-effect-1">OUR SERVICES</a>
                     </div>
@@ -85,51 +72,22 @@
             </div>
         </div>
         <div class="row ltn__custom-gutter--- justify-content-center">
-            <div class="col-lg-4 col-sm-6 col-12">
-                <div class="ltn__feature-item ltn__feature-item-6 text-center bg-white  box-shadow-1">
-                    <div class="ltn__feature-icon">
-                        <!-- <span><i class="flaticon-house"></i></span> -->
-                        <img src="{{asset("frontend/img/icons/icon-img/21.png")}}" alt="#">
-                    </div>
-                    <div class="ltn__feature-info">
-                        <h3><a href="service-details.html">Buy a home</a></h3>
-                        <p>over 1 million+ homes for sale available on the website, we can match you with a house you
-                            will want to call home.</p>
-                        <a class="ltn__service-btn" href="service-details.html">Find A Home <i
-                                class="flaticon-right-arrow"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 col-12">
-                <div class="ltn__feature-item ltn__feature-item-6 text-center bg-white  box-shadow-1 active">
-                    <div class="ltn__feature-icon">
-                        <!-- <span><i class="flaticon-house-3"></i></span> -->
-                        <img src="{{asset("frontend/img/icons/icon-img/22.png")}}" alt="#">
-                    </div>
-                    <div class="ltn__feature-info">
-                        <h3><a href="service-details.html">Rent a home</a></h3>
-                        <p>over 1 million+ homes for sale available on the website, we can match you with a house you
-                            will want to call home.</p>
-                        <a class="ltn__service-btn" href="service-details.html">Find A Home <i
-                                class="flaticon-right-arrow"></i></a>
+
+            @foreach ($focus_data as $each_focus)
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="ltn__feature-item ltn__feature-item-6 text-center bg-white  box-shadow-1">
+                        <div class="ltn__feature-icon">
+                            <!-- <span><i class="flaticon-house"></i></span> -->
+                            <img src="{{asset('storage/' . $each_focus['icon'])}}" alt="#">
+                        </div>
+                        <div class="ltn__feature-info">
+                            <h3><a href="service-details.html">{{ $each_focus['title'] }}</a></h3>
+                            <p>{{ $each_focus['detail'] }}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 col-12">
-                <div class="ltn__feature-item ltn__feature-item-6 text-center bg-white  box-shadow-1">
-                    <div class="ltn__feature-icon">
-                        <!-- <span><i class="flaticon-deal-1"></i></span> -->
-                        <img src="{{asset("frontend/img/icons/icon-img/23.png")}}" alt="#">
-                    </div>
-                    <div class="ltn__feature-info">
-                        <h3><a href="service-details.html">Sell a home</a></h3>
-                        <p>over 1 million+ homes for sale available on the website, we can match you with a house you
-                            will want to call home.</p>
-                        <a class="ltn__service-btn" href="service-details.html">Find A Home <i
-                                class="flaticon-right-arrow"></i></a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
+            
         </div>
     </div>
 </div>
@@ -142,7 +100,7 @@
             <div class="col-lg-12">
                 <div class="section-title-area ltn__section-title-2--- text-center">
                     <h6 class="section-subtitle section-subtitle-2 ltn__secondary-color">Team</h6>
-                    <h1 class="section-title">Property Agents</h1>
+                    <h1 class="section-title">Our Dedicated Team</h1>
                 </div>
             </div>
         </div>
@@ -153,7 +111,7 @@
                         <img src="{{asset("frontend/img/team/4.jpg")}}" alt="Image">
                     </div>
                     <div class="team-info">
-                        <h4><a href="team-details.html">Rosalina D. William</a></h4>
+                        <h4><a>Rosalina D. William</a></h4>
                         <h6 class="ltn__secondary-color">Real Estate Broker</h6>
                         <div class="ltn__social-media">
                             <ul>
@@ -171,7 +129,7 @@
                         <img src="{{asset("frontend/img/team/2.jpg")}}" alt="Image">
                     </div>
                     <div class="team-info">
-                        <h4><a href="team-details.html">Kelian Anderson</a></h4>
+                        <h4><a>Kelian Anderson</a></h4>
                         <h6 class="ltn__secondary-color">Selling Agents</h6>
                         <div class="ltn__social-media">
                             <ul>
@@ -189,7 +147,7 @@
                         <img src="{{asset("frontend/img/team/5.jpg")}}" alt="Image">
                     </div>
                     <div class="team-info">
-                        <h4><a href="team-details.html">Miranda H. Halim</a></h4>
+                        <h4><a>Miranda H. Halim</a></h4>
                         <h6 class="ltn__secondary-color">Property Seller</h6>
                         <div class="ltn__social-media">
                             <ul>
@@ -218,94 +176,29 @@
             </div>
         </div>
         <div class="row ltn__testimonial-slider-5-active slick-arrow-1">
-            <div class="col-lg-4">
-                <div class="ltn__testimonial-item ltn__testimonial-item-7">
-                    <div class="ltn__testimoni-info">
-                        <p><i class="flaticon-left-quote-1"></i>
-                            Precious ipsum dolor sit amet
-                            consectetur adipisicing elit, sed dos
-                            mod tempor incididunt ut labore et
-                            dolore magna aliqua. Ut enim ad min
-                            veniam, quis nostrud Precious ips
-                            um dolor sit amet, consecte</p>
-                        <div class="ltn__testimoni-info-inner">
-                            <div class="ltn__testimoni-img">
-                                <img src="{{asset("frontend/img/testimonial/1.jpg")}}" alt="#">
-                            </div>
-                            <div class="ltn__testimoni-name-designation">
-                                <h5>Jacob William</h5>
-                                <label>Selling Agents</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="ltn__testimonial-item ltn__testimonial-item-7">
-                    <div class="ltn__testimoni-info">
-                        <p><i class="flaticon-left-quote-1"></i>
-                            Precious ipsum dolor sit amet
-                            consectetur adipisicing elit, sed dos
-                            mod tempor incididunt ut labore et
-                            dolore magna aliqua. Ut enim ad min
-                            veniam, quis nostrud Precious ips
-                            um dolor sit amet, consecte</p>
-                        <div class="ltn__testimoni-info-inner">
-                            <div class="ltn__testimoni-img">
-                                <img src="{{asset("frontend/img/testimonial/2.jpg")}}" alt="#">
-                            </div>
-                            <div class="ltn__testimoni-name-designation">
-                                <h5>Kelian Anderson</h5>
-                                <label>Selling Agents</label>
+            
+            @foreach ($feedback_data as $each_feedback)
+                <div class="col-lg-4">
+                    <div class="ltn__testimonial-item ltn__testimonial-item-7">
+                        <div class="ltn__testimoni-info">
+                            <p>
+                                <i class="flaticon-left-quote-1"></i>
+                                {{ $each_feedback['detail'] }}
+                            </p>
+                            <div class="ltn__testimoni-info-inner">
+                                <div class="ltn__testimoni-img">
+                                    <img src="{{ asset('storage/' . $each_feedback['image']) }}" alt="#">
+                                </div>
+                                <div class="ltn__testimoni-name-designation">
+                                    <h5>{{ $each_feedback['name'] }}</h5>
+                                    <label>{{ $each_feedback['title'] }}</label>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="ltn__testimonial-item ltn__testimonial-item-7">
-                    <div class="ltn__testimoni-info">
-                        <p><i class="flaticon-left-quote-1"></i>
-                            Precious ipsum dolor sit amet
-                            consectetur adipisicing elit, sed dos
-                            mod tempor incididunt ut labore et
-                            dolore magna aliqua. Ut enim ad min
-                            veniam, quis nostrud Precious ips
-                            um dolor sit amet, consecte</p>
-                        <div class="ltn__testimoni-info-inner">
-                            <div class="ltn__testimoni-img">
-                                <img src="{{asset("frontend/img/testimonial/3.jpg")}}" alt="#">
-                            </div>
-                            <div class="ltn__testimoni-name-designation">
-                                <h5>Adam Joseph</h5>
-                                <label>Selling Agents</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="ltn__testimonial-item ltn__testimonial-item-7">
-                    <div class="ltn__testimoni-info">
-                        <p><i class="flaticon-left-quote-1"></i>
-                            Precious ipsum dolor sit amet
-                            consectetur adipisicing elit, sed dos
-                            mod tempor incididunt ut labore et
-                            dolore magna aliqua. Ut enim ad min
-                            veniam, quis nostrud Precious ips
-                            um dolor sit amet, consecte</p>
-                        <div class="ltn__testimoni-info-inner">
-                            <div class="ltn__testimoni-img">
-                                <img src="{{asset("frontend/img/testimonial/4.jpg")}}" alt="#">
-                            </div>
-                            <div class="ltn__testimoni-name-designation">
-                                <h5>James Carter</h5>
-                                <label>Selling Agents</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
+
             <!--  -->
         </div>
     </div>
@@ -324,7 +217,7 @@
                         <p>We can help you realize your dream of a new home</p>
                     </div>
                     <div class="btn-wrapper">
-                        <a class="btn btn-effect-3 btn-white" href="contact.html">Contact Us <i
+                        <a class="btn btn-effect-3 btn-white" href="{{ route('contact.index') }}">Contact Us <i
                                 class="icon-next"></i></a>
                     </div>
                 </div>

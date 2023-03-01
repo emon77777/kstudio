@@ -156,90 +156,90 @@
             <div class="col-12">
                 <div class="ltn__category-item ltn__category-item-4 text-center">
                     <div class="ltn__category-item-img">
-                        <a href="shop.html">
+                        <a>
                             <i class="flaticon-car"></i>
                         </a>
                     </div>
                     <div class="ltn__category-item-name">
-                        <h4><a href="shop.html">Parking Space</a></h4>
+                        <h4><a>Parking Space</a></h4>
                     </div>
                     <div class="ltn__category-item-btn">
-                        <a href="shop.html"><i class="flaticon-right-arrow"></i></a>
+                        <a><i class="flaticon-right-arrow"></i></a>
                     </div>
                 </div>
             </div>
             <div class="col-12">
                 <div class="ltn__category-item ltn__category-item-4 text-center">
                     <div class="ltn__category-item-img">
-                        <a href="shop.html">
+                        <a>
                             <i class="flaticon-car"></i>
                         </a>
                     </div>
                     <div class="ltn__category-item-name">
-                        <h4><a href="shop.html">Parking Space</a></h4>
+                        <h4><a>Parking Space</a></h4>
                     </div>
                     <div class="ltn__category-item-btn">
-                        <a href="shop.html"><i class="flaticon-right-arrow"></i></a>
+                        <a><i class="flaticon-right-arrow"></i></a>
                     </div>
                 </div>
             </div>
             <div class="col-12">
                 <div class="ltn__category-item ltn__category-item-4 text-center">
                     <div class="ltn__category-item-img">
-                        <a href="shop.html">
+                        <a>
                             <i class="flaticon-car"></i>
                         </a>
                     </div>
                     <div class="ltn__category-item-name">
-                        <h4><a href="shop.html">Parking Space</a></h4>
+                        <h4><a>Parking Space</a></h4>
                     </div>
                     <div class="ltn__category-item-btn">
-                        <a href="shop.html"><i class="flaticon-right-arrow"></i></a>
+                        <a><i class="flaticon-right-arrow"></i></a>
                     </div>
                 </div>
             </div>
             <div class="col-12">
                 <div class="ltn__category-item ltn__category-item-4 text-center">
                     <div class="ltn__category-item-img">
-                        <a href="shop.html">
+                        <a>
                             <i class="flaticon-car"></i>
                         </a>
                     </div>
                     <div class="ltn__category-item-name">
-                        <h4><a href="shop.html">Parking Space</a></h4>
+                        <h4><a>Parking Space</a></h4>
                     </div>
                     <div class="ltn__category-item-btn">
-                        <a href="shop.html"><i class="flaticon-right-arrow"></i></a>
+                        <a><i class="flaticon-right-arrow"></i></a>
                     </div>
                 </div>
             </div>
             <div class="col-12">
                 <div class="ltn__category-item ltn__category-item-4 text-center">
                     <div class="ltn__category-item-img">
-                        <a href="shop.html">
+                        <a>
                             <i class="flaticon-car"></i>
                         </a>
                     </div>
                     <div class="ltn__category-item-name">
-                        <h4><a href="shop.html">Parking Space</a></h4>
+                        <h4><a>Parking Space</a></h4>
                     </div>
                     <div class="ltn__category-item-btn">
-                        <a href="shop.html"><i class="flaticon-right-arrow"></i></a>
+                        <a><i class="flaticon-right-arrow"></i></a>
                     </div>
                 </div>
             </div>
             <div class="col-12">
                 <div class="ltn__category-item ltn__category-item-4 text-center">
                     <div class="ltn__category-item-img">
-                        <a href="shop.html">
+                        <a>
                             <i class="flaticon-car"></i>
                         </a>
                     </div>
                     <div class="ltn__category-item-name">
-                        <h4><a href="shop.html">Parking Space</a></h4>
+                        <h4><a>Parking Space</a></h4>
                     </div>
                     <div class="ltn__category-item-btn">
-                        <a href="shop.html"><i class="flaticon-right-arrow"></i></a>
+                        <a><i class="flaticon-right-arrow"></i></a>
                     </div>
                 </div>
             </div>
@@ -264,7 +264,7 @@
             @foreach ($amenity_data as $each_amenity)
                 <div class="col-lg-3 col-md-4 col-sm-6 col-6">
                     <div class="ltn__category-item ltn__category-item-5 text-center">
-                        <a href="shop.html">
+                        <a>
                             <span class="category-icon"><i class="{{ $each_amenity['icon'] }}"></i></span>
                             <span class="category-title" style="font-size: 16px;">{{ $each_amenity['title'] }}</span>
                             {{-- <span class="category-btn"><i class="flaticon-right-arrow"></i></span> --}}
@@ -275,7 +275,7 @@
 
             {{-- <div class="col-lg-3 col-md-4 col-sm-6 col-6">
                 <div class="ltn__category-item ltn__category-item-5 text-center">
-                    <a href="shop.html">
+                    <a>
                         <span class="category-icon"><i class="flaticon-car"></i></span>
                         <span class="category-title">Parking Space</span>
                         <span class="category-btn"><i class="flaticon-right-arrow"></i></span>
@@ -284,7 +284,7 @@
             </div>
             <div class="col-lg-3 col-md-4 col-sm-6 col-6">
                 <div class="ltn__category-item ltn__category-item-5 text-center">
-                    <a href="shop.html">
+                    <a>
                         <span class="category-icon"><i class="flaticon-swimming"></i></span>
                         <span class="category-title">Swimming Pool</span>
                         <span class="category-btn"><i class="flaticon-right-arrow"></i></span>
@@ -293,7 +293,7 @@
             </div>
             <div class="col-lg-3 col-md-4 col-sm-6 col-6">
                 <div class="ltn__category-item ltn__category-item-5 text-center">
-                    <a href="shop.html">
+                    <a>
                         <span class="category-icon"><i class="flaticon-secure-shield"></i></span>
                         <span class="category-title">Private Security</span>
                         <span class="category-btn"><i class="flaticon-right-arrow"></i></span>
@@ -302,7 +302,7 @@
             </div>
             <div class="col-lg-3 col-md-4 col-sm-6 col-6">
                 <div class="ltn__category-item ltn__category-item-5 text-center">
-                    <a href="shop.html">
+                    <a>
                         <span class="category-icon"><i class="flaticon-stethoscope"></i></span>
                         <span class="category-title">Medical Center</span>
                         <span class="category-btn"><i class="flaticon-right-arrow"></i></span>
@@ -311,7 +311,7 @@
             </div>
             <div class="col-lg-3 col-md-4 col-sm-6 col-6">
                 <div class="ltn__category-item ltn__category-item-5 text-center">
-                    <a href="shop.html">
+                    <a>
                         <span class="category-icon"><i class="flaticon-book"></i></span>
                         <span class="category-title">Library Area</span>
                         <span class="category-btn"><i class="flaticon-right-arrow"></i></span>
@@ -320,7 +320,7 @@
             </div>
             <div class="col-lg-3 col-md-4 col-sm-6 col-6">
                 <div class="ltn__category-item ltn__category-item-5 text-center">
-                    <a href="shop.html">
+                    <a>
                         <span class="category-icon"><i class="flaticon-bed-1"></i></span>
                         <span class="category-title">King Size Beds</span>
                         <span class="category-btn"><i class="flaticon-right-arrow"></i></span>
@@ -329,7 +329,7 @@
             </div>
             <div class="col-lg-3 col-md-4 col-sm-6 col-6">
                 <div class="ltn__category-item ltn__category-item-5 text-center">
-                    <a href="shop.html">
+                    <a>
                         <span class="category-icon"><i class="flaticon-home-2"></i></span>
                         <span class="category-title">Smart Homes</span>
                         <span class="category-btn"><i class="flaticon-right-arrow"></i></span>
@@ -338,7 +338,7 @@
             </div>
             <div class="col-lg-3 col-md-4 col-sm-6 col-6">
                 <div class="ltn__category-item ltn__category-item-5 text-center">
-                    <a href="shop.html">
+                    <a>
                         <span class="category-icon"><i class="flaticon-slider"></i></span>
                         <span class="category-title">Kid’s Playland</span>
                         <span class="category-btn"><i class="flaticon-right-arrow"></i></span>
@@ -363,6 +363,7 @@
             </div>
         </div>
         <div class="row ltn__testimonial-slider-5-active slick-arrow-1">
+            
             @foreach ($feedback_data as $each_feedback)
                 <div class="col-lg-4">
                     <div class="ltn__testimonial-item ltn__testimonial-item-7">

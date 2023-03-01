@@ -6,6 +6,8 @@ use App\Models\Contact;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\About;
+use App\Models\Service;
 
 class ServiceController extends Controller
 {
@@ -16,8 +18,9 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        // Display service page
-        return view("frontend.pages.service.index");
+        $about_data = About::first();
+        $service_data = Service::get();
+        return view('frontend.pages.service.index', compact(['about_data', 'service_data']));
     }
 
     /**

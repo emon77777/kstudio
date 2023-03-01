@@ -54,7 +54,6 @@ class CategoryController extends Controller
         // validation input
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'status' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -63,7 +62,7 @@ class CategoryController extends Controller
 
         $category = new Category();
         $category->name = ucfirst($request->input('name'));
-        $category->status = $request->input('status');
+        $category->status = 1;
         $category->save();
         
         return redirect()->route('admin.category.index')->with('success', 'Category Created successfully');

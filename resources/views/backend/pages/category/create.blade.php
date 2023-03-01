@@ -36,9 +36,9 @@
                 @csrf
                 <div class="card-body">
                   <div class="row">
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-6">
                         <label for="name">Categoy Name</label>
-                        <input type="text" class="form-control form-control-sm" name="name" id="name" placeholder="Enter category name" value="">
+                        <input type="text" class="form-control form-control" name="name" id="name" placeholder="Enter category name" value="">
                         @error('name')
                         <div class="text-danger py-0 px-1 mb-1" role="alert">
                             Email field cannot be empty!
@@ -46,19 +46,6 @@
                         @enderror
                     </div>
                     
-                    <div class="form-group col-md-4">
-                        <label for="status">Status</label>
-                        <select name="status" id="status" class="form-control form-control-sm">
-                            <option value="">--Select Status--</option>
-                            <option value="0">Inactive</option>
-                            <option value="1">Active</option>
-                        </select>
-                        @error('status')
-                        <div class=" text-danger py-0 px-1 mb-1">
-                            Please select category status
-                        </div>
-                        @enderror
-                    </div>
                   </div>
                   
                 </div>

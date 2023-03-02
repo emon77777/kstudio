@@ -17,7 +17,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="{{ route('login') }}"><b>KSTUDIO</b> 2018</a>
+    <a href="{{ route('index') }}"><b>KSTUDIO</b> 2018</a>
   </div>
   <!-- /.login-logo -->
   <div class="card">

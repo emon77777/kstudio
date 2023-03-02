@@ -16,7 +16,7 @@ class ContactMailController extends Controller
     public function index()
     {
         $contact_mail_data = ContactMail::orderBy('id','desc')->get();
-        return view('backend.pages.contact-mail.index', compact('contact_mail_data'));
+        return view('backend.pages.contact_mail.index', compact('contact_mail_data'));
     }
 
     /**

@@ -1,0 +1,15 @@
+first task. - 
+1)we will set a login page
+2)we will authenticate backend.
+3)we will create database, odel, seeder, migration.
+4)we will dynamic all data one after another.
+
+ok
+
+
+amader login page er kono link thakbe na. direct URL theke type kore login page e jabo
+
+
+login page ta amra resource/frontend er modhe i rakhbo.
+
+please call me

@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('title');
             $table->string('subtitle');
             $table->string('image');
+            $table->text('description');
+            $table->json('menu');
             $table->foreignId('category_id')->constrained();
             $table->timestamps();
         });

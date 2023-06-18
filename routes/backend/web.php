@@ -30,6 +30,7 @@ Route::prefix('admin')->as('admin.')->middleware(['auth'])->group(function () {
     Route::resource('/service', ServiceController::class);
     Route::get('/portfolio/category/all', [CategoryController::class, 'fetchData'])->name('category.all');
     Route::resource('/portfolio/category', CategoryController::class);
+    Route::get('/portfolio/all', [PortfolioController::class, 'fetchPortfolios'])->name('portfolio.all');
     Route::resource('/portfolio', PortfolioController::class);
     Route::resource('/contact', ContactController::class);
     

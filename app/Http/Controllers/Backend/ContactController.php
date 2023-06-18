@@ -38,22 +38,7 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        
-        // // validate contact
-        // $validatedData = $request->validate([
-        //     'email' => 'required|email',
-        //     'phone' => 'required|regex:/^[0-9]{11}$/',
-        //     'address' => 'required|string|max:255',
-        // ]);
-
-        // // store contact
-        // $contact = new Contact();
-        // $contact->email = $validatedData['email'];
-        // $contact->phone = $validatedData['phone'];
-        // $contact->address = $validatedData['address'];
-        // $contact->save();
-
-        // return redirect('admin/contact');
+        //
     }
 
     /**

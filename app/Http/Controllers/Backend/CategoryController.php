@@ -26,6 +26,7 @@ class CategoryController extends Controller
      */
     public function fetchData(){
         $categories = Category::orderBy('id', 'desc')->get();
+        
         return array(
             'msg' => 'success',
             'data' => $categories

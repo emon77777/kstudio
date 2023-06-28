@@ -55,7 +55,7 @@
                                                     <td>{{ $each_feedback['title'] }}</td>
                                                     <td>{{ $each_feedback['detail'] }}</td>
                                                     <td>
-                                                        Edit | Delete
+                                                        <a href="{{route('admin.feedback.edit', $each_feedback['id'])}}">Edit</a> | Delete
                                                     </td>
                                                 </tr>
                                             @endforeach

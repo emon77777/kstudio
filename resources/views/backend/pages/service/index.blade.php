@@ -11,7 +11,7 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Category</a></li>
+                            <li class="breadcrumb-item"><a href="#">Service</a></li>
                             <li class="breadcrumb-item active">Show</li>
                         </ol>
                     </div>
@@ -51,7 +51,7 @@
                                                     <td>{{ $each_service['title'] }}</td>
                                                     <td>{{ $each_service['detail'] }}</td>
                                                     <td>
-                                                        Edit | Delete
+                                                        <a href="{{ route('admin.service.edit', $each_service->id)}}">Edit</a> | Delete
                                                     </td>
                                                 </tr>
                                             @endforeach

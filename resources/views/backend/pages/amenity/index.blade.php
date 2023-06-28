@@ -49,7 +49,7 @@
                                                     <td>{{ $each_amenity['icon'] }}</td>
                                                     <td>{{ $each_amenity['title'] }}</td>
                                                     <td>
-                                                        Edit | Delete
+                                                        <a href="{{route('admin.amenity.edit', $each_amenity->id)}}">Edit</a> | Delete
                                                     </td>
                                                 </tr>
                                             @endforeach

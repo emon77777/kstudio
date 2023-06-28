@@ -12,7 +12,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item">Service</li>
-                            <li class="breadcrumb-item"><a href="#">Core Service</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('admin.service.index')}}">Core Service</a></li>
                             <li class="breadcrumb-item active">Create</li>
                         </ol>
                     </div>

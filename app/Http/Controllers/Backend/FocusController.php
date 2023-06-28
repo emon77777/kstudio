@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Focus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use PhpParser\Node\Stmt\For_;
 
 class FocusController extends Controller
 {
@@ -74,7 +75,8 @@ class FocusController extends Controller
      */
     public function edit($id)
     {
-        //
+        $focus = Focus::find($id);
+        return view("backend.pages.focus.edit", compact("focus"));
     }
 
     /**
@@ -86,7 +88,23 @@ class FocusController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = Validator::make(request()->all(), [
+            'icon' => 'required',
+            'title' => 'required',
+            'detail' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $focus = Focus::find($id);
+
+        $focus->update([
+            'icon' => $request->input('icon'),
+            'title' => $request->input('title'),
+            'detail' => $request->input('detail')
+        ]);
+        return redirect()->route('admin.focus.index')->with('success', 'Focus data updated successfully');
     }
 
     /**

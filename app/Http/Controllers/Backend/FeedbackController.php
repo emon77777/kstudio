@@ -83,7 +83,8 @@ class FeedbackController extends Controller
      */
     public function edit($id)
     {
-        //
+        $feedback = Feedback::find($id);
+        return view("backend.pages.feedback.edit", compact("feedback"));
     }
 
     /**
@@ -95,7 +96,32 @@ class FeedbackController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = Validator::make(request()->all(), [
+            'name' => 'required',
+            'title' => 'required',
+            'detail' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $feedback = Feedback::find($id);
+
+        if (!empty($_FILES['image']['name'])) {
+            $feedback_photo_name = 'feedback_photo_' . time() . '.' . pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+            Storage::disk('public')->delete($feedback->image);
+            $feedbackImage = Storage::disk('public')->putFileAs('feedback', $request->file('image'), $feedback_photo_name);
+        } else {
+            $feedbackImage = $feedback->image;
+        }
+
+        $feedback->update([
+            'image' => $feedbackImage,
+            'name' => $request->input('name'),
+            'title' => $request->input('title'),
+            'detail' => $request->input('detail')
+        ]);
+        return redirect()->route('admin.feedback.index')->with('success', 'Feedback Created successfully');
     }
 
     /**

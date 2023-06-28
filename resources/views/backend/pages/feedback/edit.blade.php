@@ -7,13 +7,13 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Amenities</h1>
+                        <h1>Feedback</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item">Service</li>
-                            <li class="breadcrumb-item"><a href="{{route('admin.amenity.index')}}">Amenity</a></li>
-                            <li class="breadcrumb-item active">Create</li>
+                            <li class="breadcrumb-item">Portfolio</li>
+                            <li class="breadcrumb-item"><a href="{{route('admin.feedback.index')}}">Feedback</a></li>
+                            <li class="breadcrumb-item active">Edit</li>
                         </ol>
                     </div>
                 </div>
@@ -27,20 +27,37 @@
                     <div class="col">
                         <div class="card">
                             <div class="card-header d-flex">
-                                <h3 class="card-title">Create Amenity</h3>
+                                <h3 class="card-title">Edit Feedback</h3>
                             </div>
-                            <form role="form" action="{{ route('admin.amenity.store') }}" method="post">
+                            <form role="form" action="{{ route('admin.feedback.update', $feedback['id']) }}" method="post" enctype="multipart/form-data">
                                 @csrf
+                                @method('PUT')
                                 <div class="card-body">
                                     <div class="row">
+                                        
                                         <div class="form-group col-md-6 email-container">
-                                            <label for="icon">Icon</label>
-                                            @if ($errors->first('icon'))
+                                            <label for="image">Image</label>
+                                            <input type="file" class="form-control" name="image" id="image">
+                                        </div>
+
+                                        <div class="form-group col-md-6">
+                                            <label for="">Old Image</label>
+                                            <br>
+                                            @if ($feedback['image'])
+                                                <img id="old_image" style="max-height:100px;"
+                                                    src="{{ asset('storage/' . $feedback['image']) }}"
+                                                    alt="feedback image" />
+                                            @endif
+                                        </div>
+                                        
+                                        <div class="form-group col-md-6 email-container">
+                                            <label for="name">Name</label>
+                                            @if ($errors->first('name'))
                                                 <div class=" text-danger py-0 px-1 mb-1">
-                                                    Please enter valid Icon
+                                                    Please enter valid name
                                                 </div>
                                             @endif
-                                            <input type="text" required class="form-control" name="icon" id="icon" placeholder="Enter Icon">
+                                            <input type="text" required class="form-control" name="name" id="name" placeholder="Enter name" value="{{$feedback['name']}}">
                                         </div>
 
                                         <div class="form-group col-md-6">
@@ -50,7 +67,7 @@
                                                     Please enter valid title
                                                 </div>
                                             @endif
-                                            <input type="text" required class="form-control" name="title" id="title" placeholder="Enter Title">
+                                            <input type="text" required class="form-control" name="title" id="title" placeholder="Enter Title" value="{{$feedback['title']}}">
                                         </div>
 
                                         <div class="form-group col-12">
@@ -60,7 +77,7 @@
                                                     Detail field cannot be empty
                                                 </div>
                                             @endif
-                                            <textarea class="form-control" required id="detail" rows="5" name="detail"></textarea>
+                                            <textarea class="form-control" required id="detail" rows="5" name="detail">{{$feedback['detail']}}</textarea>
                                         </div>
                                         
                                     </div>
@@ -69,7 +86,7 @@
                                 <!-- /.card-body -->
 
                                 <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary">Create</button>
+                                    <button type="submit" class="btn btn-primary">Update</button>
                                 </div>
                             </form>
 

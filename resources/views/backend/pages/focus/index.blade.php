@@ -51,7 +51,7 @@
                                                     <td>{{ $each_focus['title'] }}</td>
                                                     <td>{{ $each_focus['detail'] }}</td>
                                                     <td>
-                                                        Edit | Delete
+                                                        <a href="{{route('admin.focus.edit', $each_focus->id)}}">Edit</a> | Delete
                                                     </td>
                                                 </tr>
                                             @endforeach

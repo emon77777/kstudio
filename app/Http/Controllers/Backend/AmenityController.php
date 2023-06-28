@@ -72,7 +72,8 @@ class AmenityController extends Controller
      */
     public function edit($id)
     {
-        //
+        $amenity = Amenity::find($id);
+        return view("backend.pages.amenity.edit", compact("amenity"));
     }
 
     /**
@@ -84,7 +85,20 @@ class AmenityController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = Validator::make(request()->all(), [
+            'icon' => 'required',
+            'title' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $amenity = Amenity::find($id);
+        $amenity->update([
+            'icon' => $request->input('icon'),
+            'title' => $request->input('title')
+        ]);
+        return redirect()->route('admin.amenity.index')->with('success', 'Amenity Updated successfully');
     }
 
     /**

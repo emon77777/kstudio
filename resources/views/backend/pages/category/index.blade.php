@@ -43,7 +43,23 @@
                                             </tr>
                                         </thead>
                                         <tbody id="all-category">
-                                            {{-- category data from ajax --}}
+                                            @php
+                                                $sl = 1;
+                                            @endphp
+                                            @foreach($categories as $category)
+                                            <tr>
+                                                <td>{{$sl++}}</td>
+                                                <td>{{$category->name}}</td>
+                                                <td>
+                                                    @if($category->status==1)
+                                                        <span class="bg-success px-2 py-1 rounded">Active</span>
+                                                    @else
+                                                    <span class="bg-secondary px-2 py-1 rounded">Inactive</span>
+                                                    @endif
+                                                </td>
+                                                <td><a href="{{route('admin.category.edit', $category->id)}}">Edit</a>| Delete</td>
+                                            </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>

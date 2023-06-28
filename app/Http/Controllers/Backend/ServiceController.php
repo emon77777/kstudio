@@ -75,7 +75,8 @@ class ServiceController extends Controller
      */
     public function edit($id)
     {
-        //
+        $service = Service::find($id);
+        return view("backend.pages.service.edit", compact("service"));
     }
 
     /**
@@ -87,7 +88,23 @@ class ServiceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = Validator::make(request()->all(), [
+            'icon' => 'required',
+            'title' => 'required',
+            'detail' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $service = Service::find($id);
+
+        $service->update([
+            'icon' => $request->input('icon'),
+            'title' => $request->input('title'),
+            'detail' => $request->input('detail')
+        ]);
+        return redirect()->route('admin.service.index')->with('success', 'Core Service updated successfully');
     }
 
     /**

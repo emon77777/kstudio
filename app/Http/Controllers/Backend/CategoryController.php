@@ -16,7 +16,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('backend.pages.category.index');
+        $categories = Category::all();
+        return view('backend.pages.category.index', compact('categories'));
     }
 
     /**
@@ -39,7 +40,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('backend.pages.category.add');
+        return view('backend.pages.category.create');
     }
 
     /**
@@ -51,17 +52,21 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         // validation input
-        $validatedData = $request->validate([
+        $validator = Validator::make($request->all(), [
             'name' => 'required',
             'status' => 'required'
         ]);
 
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
         $category = new Category();
-        $category->name = ucfirst($validatedData['name']);
-        $category->status = $validatedData['status'];
+        $category->name = ucfirst($request->input('name'));
+        $category->status = $request->input('status');
         $category->save();
         
-        return redirect()->route('admin.category.index');
+        return redirect()->route('admin.category.index')->with('success', 'Category Created successfully');
     }
 
     /**
@@ -85,7 +90,7 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
 
-        return $category;
+        return view("backend.pages.category.edit", compact('category'));
     }
 
     /**
@@ -101,25 +106,17 @@ class CategoryController extends Controller
             'name' => 'required',
             'status' => 'required'
         ]);
- 
+
         if ($validator->fails()) {
-            return array(
-                'errors' => $validator->errors(),
-                'msg' => 'error'
-            );
+            return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        // validated inputs
-        $validated = $validator->validated();
-
         $category = Category::find($id);
-        $category->name = $validated['name'];
-        $category->status = $validated['status'];
+        $category->name = ucfirst($request->input('name'));
+        $category->status = $request->input('status');
         $category->update();
-
-        return array(
-            'msg' => 'success'
-        );
+        
+        return redirect()->route('admin.category.index')->with('success', 'Category Updated successfully');
     }
 
     /**

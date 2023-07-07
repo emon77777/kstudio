@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
 use App\Models\Focus;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use PhpParser\Node\Stmt\For_;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class FocusController extends Controller
 {
@@ -47,9 +48,16 @@ class FocusController extends Controller
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
+        
+        if (!empty($_FILES['icon'])) {
+            $focus_icon_name = 'focus_icon_' . time() . '.' . pathinfo($_FILES['icon']['name'], PATHINFO_EXTENSION);
+            $focusIcon = Storage::disk('public')->putFileAs('focus', $request->file('icon'), $focus_icon_name);
+        } else {
+            $focusIcon = 'demo/demo_img.png';
+        }
 
         Focus::create([
-            'icon' => $request->input('icon'),
+            'icon' => $focusIcon,
             'title' => $request->input('title'),
             'detail' => $request->input('detail')
         ]);
@@ -99,8 +107,16 @@ class FocusController extends Controller
 
         $focus = Focus::find($id);
 
+        if (!empty($_FILES['icon']['name'])) {
+            $focus_icon_name = 'focus_icon_' . time() . '.' . pathinfo($_FILES['icon']['name'], PATHINFO_EXTENSION);
+            Storage::disk('public')->delete($focus->icon);
+            $focusIcon = Storage::disk('public')->putFileAs('focus', $request->file('icon'), $focus_icon_name);
+        } else {
+            $focusIcon = $focus->icon;
+        }
+
         $focus->update([
-            'icon' => $request->input('icon'),
+            'icon' => $focusIcon,
             'title' => $request->input('title'),
             'detail' => $request->input('detail')
         ]);

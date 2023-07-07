@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
 use App\Models\About;
-use App\Models\Amenity;
-use App\Models\Feedback;
 use App\Models\Focus;
+use App\Models\Amenity;
+use App\Models\Contact;
+use App\Models\Setting;
+use App\Models\Feedback;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
@@ -22,7 +24,9 @@ class HomeController extends Controller
         $amenity_data = Amenity::get();
         $focus_data = Focus::limit(3)->get();
         $feedback_data = Feedback::all();
-        return view('frontend.pages.home.index', compact(['about_data', 'amenity_data', 'focus_data', 'feedback_data']));
+        $footer_data = Setting::select('footer_short_text', 'facebook', 'twitter', 'linkedin', 'youtube')->first();
+        $contact_data = Contact::first();
+        return view('frontend.pages.home.index', compact(['about_data', 'amenity_data', 'focus_data', 'feedback_data', 'footer_data', 'contact_data']));
     }
 
     /**

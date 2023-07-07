@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
 use App\Models\About;
+use App\Models\Contact;
+use App\Models\Setting;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class AboutController extends Controller
 {
@@ -16,7 +18,9 @@ class AboutController extends Controller
     public function index()
     {
         $about_data = About::first();
-        return view("frontend.pages.about.index", compact(['about_data']));
+        $footer_data = Setting::select('footer_short_text', 'facebook', 'twitter', 'linkedin', 'youtube')->first();
+        $contact_data = Contact::first();
+        return view("frontend.pages.about.index", compact(['about_data', 'footer_data', 'contact_data']));
     }
 
     /**

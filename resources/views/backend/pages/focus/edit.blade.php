@@ -29,7 +29,7 @@
                             <div class="card-header d-flex">
                                 <h3 class="card-title">Edit Focus Data</h3>
                             </div>
-                            <form role="form" action="{{ route('admin.focus.update', $focus->id) }}" method="post">
+                            <form role="form" action="{{ route('admin.focus.update', $focus->id) }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="card-body">
@@ -41,10 +41,18 @@
                                                     Please enter valid Icon
                                                 </div>
                                             @endif
-                                            <input type="text" required class="form-control" name="icon" id="icon" placeholder="Enter Icon" value="{{$focus->icon}}">
+                                            <input type="file" required class="form-control" name="icon" id="icon" placeholder="Enter Icon" value="">
                                         </div>
-
                                         <div class="form-group col-md-6">
+                                            <label for="">Old Image</label>
+                                            <br>
+                                            @if ($focus['icon'])
+                                                <img id="old_image" style="max-height:100px;"
+                                                    src="{{ asset('storage/' . $focus['icon']) }}"
+                                                    alt="focus icon" />
+                                            @endif
+                                        </div>
+                                        <div class="form-group col-md-12">
                                             <label for="title">Title</label>
                                             @if ($errors->first('title'))
                                                 <div class=" text-danger py-0 px-1 mb-1">

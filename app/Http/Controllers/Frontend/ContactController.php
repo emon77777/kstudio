@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
+use App\Models\Contact;
+use App\Models\Setting;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ContactController extends Controller
 {
@@ -14,8 +16,10 @@ class ContactController extends Controller
      */
     public function index()
     {
+        $footer_data = Setting::select('footer_short_text', 'facebook', 'twitter', 'linkedin', 'youtube')->first();
+        $contact_data = Contact::first();
         // Display contact page
-        return view("frontend.pages.contact.index");
+        return view("frontend.pages.contact.index", compact('footer_data', 'contact_data'));
     }
 
     /**

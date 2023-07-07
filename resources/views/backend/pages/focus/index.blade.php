@@ -47,7 +47,7 @@
                                             @foreach ($all_focus as $key=>$each_focus)
                                                 <tr>
                                                     <td>{{ $key+1 }}</td>
-                                                    <td>{{ $each_focus['icon'] }}</td>
+                                                    <td><img id="icon" style="height:80px;" src="{{ asset('storage/' . $each_focus['icon']) }}" alt="{{ $each_focus['name'] }}"/></td>
                                                     <td>{{ $each_focus['title'] }}</td>
                                                     <td>{{ $each_focus['detail'] }}</td>
                                                     <td>

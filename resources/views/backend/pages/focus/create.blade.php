@@ -29,7 +29,7 @@
                             <div class="card-header d-flex">
                                 <h3 class="card-title">Create Focus Data</h3>
                             </div>
-                            <form role="form" action="{{ route('admin.focus.store') }}" method="post">
+                            <form role="form" action="{{ route('admin.focus.store') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="card-body">
                                     <div class="row">
@@ -40,7 +40,7 @@
                                                     Please enter valid Icon
                                                 </div>
                                             @endif
-                                            <input type="text" required class="form-control" name="icon" id="icon" placeholder="Enter Icon">
+                                            <input type="file" required class="form-control" name="icon" id="icon" placeholder="Enter Icon">
                                         </div>
 
                                         <div class="form-group col-md-6">

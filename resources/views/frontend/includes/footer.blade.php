@@ -77,7 +77,7 @@
                     <div class="footer-widget footer-about-widget">
                         <div class="footer-logo">
                             <div class="site-logo">
-                                <img style="height: 60px;" src="{{asset("frontend/img/kstudio_logo.png")}}" alt="Logo">
+                                <img style="height: 60px;" src="{{asset("storage/".$setting_data->brand_logo)}}" alt="Logo">
                             </div>
                         </div>
                         <p>{{ $footer_data->footer_short_text}}</p>

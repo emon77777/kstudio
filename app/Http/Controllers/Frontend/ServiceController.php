@@ -16,10 +16,8 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $footer_data = Setting::select('footer_short_text', 'facebook', 'twitter', 'linkedin', 'youtube')->first();
-        $contact_data = Contact::first();
         // Display service page
-        return view("frontend.pages.service.index", compact('footer_data', 'contact_data'));
+        return view("frontend.pages.service.index");
     }
 
     /**

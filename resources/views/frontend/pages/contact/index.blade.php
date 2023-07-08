@@ -33,8 +33,7 @@
                         <img src="{{asset("frontend/img/icons/10.png")}}" alt="Icon Image">
                     </div>
                     <h3>Email Address</h3>
-                    <p>info@webmail.com <br>
-                        jobs@webexample.com</p>
+                    <p>{{$contact_data->email}}</p>
                 </div>
             </div>
             <div class="col-lg-4">
@@ -43,7 +42,7 @@
                         <img src="{{asset("frontend/img/icons/11.png")}}" alt="Icon Image">
                     </div>
                     <h3>Phone Number</h3>
-                    <p>+0123-456789 <br> +987-6543210</p>
+                    <p>{{$contact_data->phone}}</p>
                 </div>
             </div>
             <div class="col-lg-4">
@@ -52,8 +51,7 @@
                         <img src="{{asset("frontend/img/icons/12.png")}}" alt="Icon Image">
                     </div>
                     <h3>Office Address</h3>
-                    <p>18/A, New Born Town Hall <br>
-                        New York, US</p>
+                    <p>{{$contact_data->address}}</p>
                 </div>
             </div>
         </div>

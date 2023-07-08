@@ -190,5 +190,27 @@ $(function(){
     });
 
     /* PORTFOLIO CATEGORY ENDS */
+
+
+    /* PORTFOLIO START */
+        // Add Menu Input In Create Form
+        function addMenu(){
+            var inputMenu = `<div class="d-flex mb-2">
+            <input type="text" class="form-control portfolio-menu" name="menu[]">
+            <span class="btn btn-danger btn ml-2 remove-menu"><i class="fas fa-times"></i></span>
+        </div>`;
+
+            $('#menu-container').append(inputMenu);
+        }
+
+        $('#add-menu').click(addMenu);
+
+        // Remove Menu Input In Create Form
+        function removeMenu(){
+            $(this).parent().remove();
+        }
+
+        $('#menu-container').on('click', '.remove-menu', removeMenu);
+    /* PORTFOLIO END */
     
 });

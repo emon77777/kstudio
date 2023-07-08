@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Portfolio;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class PortfolioController extends Controller
 {
@@ -14,8 +18,9 @@ class PortfolioController extends Controller
      */
     public function index()
     {
-        return view("backend.pages.portfolio.index");
-
+        $portfolio_data = Portfolio::all();
+        $categories = Category::all();
+        return view("backend.pages.portfolio.index", compact('portfolio_data', 'categories'));
     }
 
     /**
@@ -25,7 +30,8 @@ class PortfolioController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('backend.pages.portfolio.create', compact('categories'));
     }
 
     /**
@@ -36,7 +42,35 @@ class PortfolioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validation rules
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+            'subTitle' => 'required',
+            'category' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        // error message
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        // upload image
+        if (!empty($_FILES['image'])) {
+            $portfolio_image_name = 'portfolio_image_' . time() . '.' . pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+            $portfolioImage = Storage::disk('public')->putFileAs('portfolio', $request->file('image'), $portfolio_image_name);
+        } else {
+            $portfolioImage = 'demo/demo_img.png';
+        }
+
+        Portfolio::create([
+            'title' => $request->input('title'),
+            'subtitle' => $request->input('subTitle'),
+            'category_id' => $request->input('category'),
+            'image' => $portfolioImage
+        ]);
+
+        return redirect()->route('admin.portfolio.index')->with('success', 'Portfolio data Created successfully');
     }
 
     /**
@@ -47,11 +81,7 @@ class PortfolioController extends Controller
      */
     public function show($id)
     {
-        dd(
-            "h2"
-        );
-        // return view("backend.pages.portfolio.show");
-
+        //
     }
 
     /**
@@ -61,8 +91,10 @@ class PortfolioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        //
+    {   
+        $categories = Category::all();
+        $portfolio_data = Portfolio::find($id);
+        return view('backend.pages.portfolio.edit', compact('portfolio_data', 'categories'));
     }
 
     /**
@@ -74,7 +106,38 @@ class PortfolioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // validation rules
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+            'subTitle' => 'required',
+            'category' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        // error message
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $portfolio = Portfolio::find($id);
+
+        // update image
+        if (!empty($_FILES['image'])) {
+            $portfolio_image_name = 'portfolio_image_' . time() . '.' . pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+            Storage::disk('public')->delete($portfolio->image);
+            $portfolioImage = Storage::disk('public')->putFileAs('portfolio', $request->file('image'), $portfolio_image_name);
+        } else {
+            $portfolioImage = $portfolio->image;
+        }
+
+        $portfolio->update([
+            'title' => $request->input('title'),
+            'subtitle' => $request->input('subTitle'),
+            'category_id' => $request->input('category'),
+            'image' => $portfolioImage
+        ]);
+
+        return redirect()->route('admin.portfolio.index')->with('success', 'Portfolio data Updated successfully');
     }
 
     /**

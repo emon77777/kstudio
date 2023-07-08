@@ -87,17 +87,9 @@
                                     </li>
                                     <li class="hover_menu text-dark">
                                         <a href="{{route('service.index')}}" @style(['color:var(--ltn__secondary-color)' => request()->is('service')])>Service</a>
-                                        <ul>
-                                            <li>
-                                                <a href="{{route('service.show', 1)}}">Service details</a>
-                                            </li>
-                                        </ul>
                                     </li>
                                     <li class="hover_menu text-dark">
                                         <a href="{{route('portfolio.index')}}" @style(['color:var(--ltn__secondary-color)' => request()->is('portfolio')])>Portfolio</a>
-                                        <ul>
-                                            <li><a href="{{route('portfolio.show', 1)}}">Portfolio Details</a></li>
-                                        </ul>
                                     </li>
                                     <li class="hover_menu">
                                         <a href="{{route('contact.index')}}" @style(['color:var(--ltn__secondary-color)' => request()->is('contact')])>Contact</a>

@@ -19,14 +19,8 @@
                 <li><a href="{{route("about.index")}}">About</a>
                 </li>
                 <li><a href="{{route("service.index")}}">Service</a>
-                    <ul class="sub-menu">
-                        <li><a href="{{route("service.show", "1")}}">Servie Details</a></li>
-                    </ul>
                 </li>
                 <li><a href="{{route("portfolio.index")}}">Portfolio</a>
-                    <ul class="sub-menu">
-                        <li><a href="{{route("portfolio.show", "1")}}">News</a></li>
-                    </ul>
                 </li>
                 <li><a href="{{route("contact.index")}}">Contact</a></li>
             </ul>

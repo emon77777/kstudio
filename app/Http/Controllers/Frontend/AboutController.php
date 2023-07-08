@@ -18,9 +18,7 @@ class AboutController extends Controller
     public function index()
     {
         $about_data = About::first();
-        $footer_data = Setting::select('footer_short_text', 'facebook', 'twitter', 'linkedin', 'youtube')->first();
-        $contact_data = Contact::first();
-        return view("frontend.pages.about.index", compact(['about_data', 'footer_data', 'contact_data']));
+        return view("frontend.pages.about.index", compact(['about_data']));
     }
 
     /**

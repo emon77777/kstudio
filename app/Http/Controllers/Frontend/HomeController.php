@@ -24,9 +24,7 @@ class HomeController extends Controller
         $amenity_data = Amenity::get();
         $focus_data = Focus::limit(3)->get();
         $feedback_data = Feedback::all();
-        $footer_data = Setting::select('footer_short_text', 'facebook', 'twitter', 'linkedin', 'youtube')->first();
-        $contact_data = Contact::first();
-        return view('frontend.pages.home.index', compact(['about_data', 'amenity_data', 'focus_data', 'feedback_data', 'footer_data', 'contact_data']));
+        return view('frontend.pages.home.index', compact(['about_data', 'amenity_data', 'focus_data', 'feedback_data']));
     }
 
     /**

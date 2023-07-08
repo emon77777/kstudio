@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Models\Contact;
 use App\Models\Setting;
+use App\Models\Portfolio;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 
 class PortfolioController extends Controller
 {
@@ -16,10 +18,10 @@ class PortfolioController extends Controller
      */
     public function index()
     {
-        $footer_data = Setting::select('footer_short_text', 'facebook', 'twitter', 'linkedin', 'youtube')->first();
-        $contact_data = Contact::first();
+        $portfolio_data = Portfolio::all();
+        $categories = Category::where('status', '1')->get();
         // Display portfolio page
-        return view("frontend.pages.portfolio.index", compact('footer_data', 'contact_data'));
+        return view("frontend.pages.portfolio.index", compact('portfolio_data', 'categories'));
     }
 
     /**

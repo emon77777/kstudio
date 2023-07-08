@@ -32,8 +32,11 @@
                 <div class="ltn__gallery-menu">
                     <div class="ltn__gallery-filter-menu portfolio-filter text-uppercase mb-50">
                         <button data-filter="*" class="active">all</button>
-                        <button data-filter=".filter_category_1">Houses</button>
-                        <button data-filter=".filter_category_2">Retail</button>
+                        @foreach ($categories as $category)
+                        <button data-filter=".filter_category_{{$category->id}}">{{$category->name}}</button>
+                        @endforeach
+                        
+                        <button data-filter=".filter_category_1">Retail</button>
                         <button data-filter=".filter_category_3">Condos</button>
                     </div>
                 </div>
@@ -45,23 +48,25 @@
         <div class="ltn__gallery-active row ltn__gallery-style-1">
             <div class="ltn__gallery-sizer col-1"></div>
 
+            @foreach($portfolio_data as $portfolio)
             <!-- gallery-item -->
-            <div class="ltn__gallery-item filter_category_3 col-md-4 col-sm-6 col-12">
+            <div class="ltn__gallery-item filter_category_{{$portfolio->category->id}} col-md-4 col-sm-6 col-12">
                 <div class="ltn__gallery-item-inner">
                     <div class="ltn__gallery-item-img">
-                        <a href="{{asset("frontend/img/gallery/1.jpg")}}" data-rel="lightcase:myCollection">
-                            <img src="{{asset("frontend/img/gallery/1.jpg")}}" alt="Image">
+                        <a href="{{asset("storage/".$portfolio->image)}}" data-rel="lightcase:myCollection">
+                            <img src="{{asset("storage/".$portfolio->image)}}" alt="Image">
                             <span class="ltn__gallery-action-icon">
                                 <i class="fas fa-search"></i>
                             </span>
                         </a>
                     </div>
                     <div class="ltn__gallery-item-info">
-                        <h4><a href="portfolio-details.html">Portfolio Link </a></h4>
-                        <p>Web Design & Development, Branding</p>
+                        <h4><a href="portfolio-details.html">{{$portfolio->title}} </a></h4>
+                        <p>{{$portfolio->subtitle}}</p>
                     </div>
                 </div>
             </div>
+            @endforeach
             <!-- gallery-item -->
             <div class="ltn__gallery-item filter_category_2 col-md-4 col-sm-6 col-12">
                 <div class="ltn__gallery-item-inner">
@@ -300,11 +305,11 @@
                 <div class="call-to-action-inner call-to-action-inner-4 text-center">
                     <div class="section-title-area ltn__section-title-2">
                         <h6 class="section-subtitle ltn__secondary-color">// any question you have //</h6>
-                        <h1 class="section-title white-color">897-876-987-90</h1>
+                        <h1 class="section-title white-color">{{$contact_data->phone}}</h1>
                     </div>
                     <div class="btn-wrapper">
-                        <a href="tel:+123456789" class="theme-btn-1 btn btn-effect-1">MAKE A CALL</a>
-                        <a href="contact.html" class="btn btn-transparent btn-effect-3 white-color">CONTACT US</a>
+                        <a href="tel:{{$contact_data->phone}}" class="theme-btn-1 btn btn-effect-1">MAKE A CALL</a>
+                        <a href="{{route('contact.index')}}" class="btn btn-transparent btn-effect-3 white-color">CONTACT US</a>
                     </div>
                 </div>
             </div>
@@ -371,7 +376,7 @@
                         <p>We can help you realize your dream of a new home</p>
                     </div>
                     <div class="btn-wrapper">
-                        <a class="btn btn-effect-3 btn-white" href="contact.html">Contact Us <i
+                        <a class="btn btn-effect-3 btn-white" href="{{route('contact.index')}}">Contact Us <i
                                 class="icon-next"></i></a>
                     </div>
                 </div>

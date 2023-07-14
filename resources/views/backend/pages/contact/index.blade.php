@@ -50,7 +50,7 @@
 
                                         <div class="form-group col-md-6 phone-container">
                                             <label for="phone">Phone</label>
-                                            @if ($errors->first('phone.*'))
+                                            @if ($errors->first('phone'))
                                                 <div class=" text-danger py-0 px-1 mb-1">
                                                     Please enter valid phone
                                                 </div>

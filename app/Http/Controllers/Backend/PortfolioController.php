@@ -111,7 +111,7 @@ class PortfolioController extends Controller
             'title' => 'required',
             'subTitle' => 'required',
             'category' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         // error message
@@ -122,7 +122,7 @@ class PortfolioController extends Controller
         $portfolio = Portfolio::find($id);
 
         // update image
-        if (!empty($_FILES['image'])) {
+        if (!empty($_FILES['image']['name'])) {
             $portfolio_image_name = 'portfolio_image_' . time() . '.' . pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
             Storage::disk('public')->delete($portfolio->image);
             $portfolioImage = Storage::disk('public')->putFileAs('portfolio', $request->file('image'), $portfolio_image_name);

@@ -75,9 +75,7 @@ class ContactController extends Controller
      */
     public function edit($id)
     {
-        $contact = Contact::find($id);
-
-        return view("backend.pages.contact.edit", ['contact'=>$contact]);
+        //
     }
 
     /**
@@ -89,20 +87,20 @@ class ContactController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+    
         // validate contact
         $validatedData = $request->validate([
             'email' => 'required|email',
-            'phone' => 'required|regex:/^[0-9]{11}$/',
+            'phone' => 'required|numeric',
             'address' => 'required|string|max:255',
             'map' => 'required'
         ]);
-
+        
         $email = $validatedData['email'];
         $phone = $validatedData['phone'];
         $address = $validatedData['address'];
         $map = $validatedData['map'];
-
+        
         Contact::updateOrCreate(
             ['id'=> $id],
             ['email' => $email, 'phone'=> $phone, 'address' => $address, 'map' => $map]

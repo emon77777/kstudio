@@ -66,32 +66,60 @@
             <div class="col-lg-12">
                 <div class="ltn__form-box contact-form-box box-shadow white-bg">
                     <h4 class="title-2">Get A Quote</h4>
-                    <form id="contact-form" action="https://tunatheme.com/tf/html/quarter-preview/quarter/mail.php"
+                    <form id="contact-form" action="{{ route('contact.store') }}"
                         method="post">
+                        @csrf
                         <div class="row">
                             <div class="col-md-6">
+                                @error('name')
+                                    <div class=" text-danger py-0 px-1 mb-1">
+                                        Please enter valid name
+                                    </div>
+                                @enderror
                                 <div class="input-item input-item-name ltn__custom-icon">
                                     <input type="text" name="name" placeholder="Enter your name">
                                 </div>
                             </div>
                             <div class="col-md-6">
+                                @error('email')
+                                    <div class=" text-danger py-0 px-1 mb-1">
+                                        Please enter valid email
+                                    </div>
+                                @enderror
                                 <div class="input-item input-item-email ltn__custom-icon">
                                     <input type="email" name="email" placeholder="Enter email address">
                                 </div>
                             </div>
                             <div class="col-md-6">
+                                @error('phone')
+                                    <div class=" text-danger py-0 px-1 mb-1">
+                                        Please enter valid phone
+                                    </div>
+                                @enderror
                                 <div class="input-item input-item-phone ltn__custom-icon">
                                     <input type="text" name="phone" placeholder="Enter phone number">
                                 </div>
                             </div>
                             <div class="col-md-6">
+                                @error('subject')
+                                <div class=" text-danger py-0 px-1 mb-1">
+                                    Please enter valid subject
+                                </div>
+                                @enderror
                                 <div class="input-item input-item-phone ltn__custom-icon">
-                                    <input type="text" name="Subject" placeholder="Enter Topic Name">
+                                    <input type="text" name="subject" placeholder="Enter Topic Name">
                                 </div>
                             </div>
                         </div>
-                        <div class="input-item input-item-textarea ltn__custom-icon">
-                            <textarea name="message" placeholder="Enter message"></textarea>
+                        <div>
+                            @error('message')
+                            <div class=" text-danger py-0 px-1 mb-1">
+                                Please enter valid message
+                            </div>
+                            @enderror
+                            <div class="input-item input-item-textarea ltn__custom-icon">
+                                <textarea name="message" placeholder="Enter message"></textarea>
+                            </div>
                         </div>
                         {{-- <p><label class="input-info-save mb-0"><input type="checkbox" name="agree"> Save my name, email, and website in this browser for the next time I comment.</label></p> --}}
                         <div class="btn-wrapper mt-0 text-center">

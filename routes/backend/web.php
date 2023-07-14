@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\AmenityController;
 use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\ContactMailController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\FeedbackController;
 use App\Http\Controllers\Backend\FocusController;
@@ -41,5 +42,5 @@ Route::prefix('admin')->as('admin.')->middleware(['auth'])->group(function () {
     Route::resource('/feedback', FeedbackController::class);
     Route::resource('/focus', FocusController::class);
     Route::resource('/setting', SettingController::class);
-    Route::get('/portfolio/category/all', [CategoryController::class, 'fetchData'])->name('category.all');
+    Route::resource('/contact-mail', ContactMailController::class);
 });

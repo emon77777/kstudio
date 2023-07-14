@@ -1,15 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers\Backend;
 
-use App\Models\Contact;
-use App\Models\Setting;
 use App\Models\ContactMail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
 
-class ContactController extends Controller
+class ContactMailController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +15,8 @@ class ContactController extends Controller
      */
     public function index()
     {
-        // Display contact page
-        return view("frontend.pages.contact.index");
+        $contact_mail_data = ContactMail::orderBy('id','desc')->get();
+        return view('backend.pages.contact-mail.index', compact('contact_mail_data'));
     }
 
     /**
@@ -40,25 +37,7 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make(request()->all(), [
-            'name' => 'required',
-            'email' => 'required',
-            'phone' => 'required|numeric',
-            'subject' => 'required',
-            'message' => 'required'
-        ]);
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-
-        ContactMail::create([
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'phone' => $request->input('phone'),
-            'subject' => $request->input('subject'),
-            'message' => $request->input('message')
-        ]);
-        return redirect()->route('contact.index')->with('success', 'Contact Mail Created successfully');
+        //
     }
 
     /**

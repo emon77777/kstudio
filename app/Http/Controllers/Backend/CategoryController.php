@@ -21,19 +21,6 @@ class CategoryController extends Controller
     }
 
     /**
-     * Response to a ajax get request.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function fetchData(){
-        $categories = Category::orderBy('id', 'desc')->get();
-        return array(
-            'msg' => 'success',
-            'data' => $categories
-        );
-    }
-
-    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

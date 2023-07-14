@@ -91,7 +91,7 @@
                     </ul>
                 </li>
                 <li
-                    class="nav-item {{ Str::startsWith($currentUrl, 'admin/service') ? 'menu-is-opening menu-open' : '' }}">
+                    class="nav-item {{ Str::startsWith($currentUrl, 'admin/service') || Str::startsWith($currentUrl, 'admin/amenity') || Str::startsWith($currentUrl, 'admin/focus') ? 'menu-is-opening menu-open' : '' }}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-tree"></i>
                         <p>
@@ -124,7 +124,7 @@
                     </ul>
                 </li>
                 <li
-                    class="nav-item {{ Str::startsWith($currentUrl, 'admin/portfolio') ? 'menu-is-opening menu-open' : '' }}">
+                    class="nav-item {{ Str::startsWith($currentUrl, 'admin/portfolio') || Str::startsWith($currentUrl, 'admin/achievement') || Str::startsWith($currentUrl, 'admin/feedback') ? 'menu-is-opening menu-open' : '' }}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-edit"></i>
                         <p>
@@ -180,7 +180,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#!" class="nav-link">
+                            <a href="{{ route('admin.contact-mail.index') }}" class="nav-link {{ request()->is('admin/contact-mail') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Contact Mail</p>
                             </a>

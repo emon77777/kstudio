@@ -7,11 +7,11 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Your Portfolio</h1>
+            <h1>Contact Mails</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Portfolio</a></li>
+              <li class="breadcrumb-item"><a href="#">Contact Mail</a></li>
               <li class="breadcrumb-item active">Show</li>
             </ol>
           </div>
@@ -26,8 +26,7 @@
           <div class="col">
             <div class="card">
                 <div class="card-header d-flex">
-                  <h3 class="card-title">Portfolios</h3>
-                  <a href="{{route('admin.portfolio.create')}}" class="btn btn-primary btn-sm ml-auto">Create</a>
+                  <h3 class="card-title">Mails</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -36,25 +35,27 @@
                           <thead>
                             <tr>
                               <th style="width: 10px">#</th>
-                              <th>Title</th>
-                              <th>Sub-title</th>
-                              <th>Category</th>
-                              <th>Image</th>
-                              <th>Action</th>
+                              <th>Name</th>
+                              <th>Email</th>
+                              <th>Phone</th>
+                              <th>Subject</th>
+                              <th class="col-3">Message</th>
+                              {{-- <th>Action</th> --}}
                             </tr>
                           </thead>
                           <tbody>
                             @php
                                 $sl = 1;
                             @endphp
-                            @foreach ($portfolio_data as $each_portfolio)
+                            @foreach ($contact_mail_data as $each_mail)
                             <tr>
                               <td>{{ $sl++ }}</td>
-                              <td>{{ $each_portfolio['title'] }}</td>
-                              <td>{{ $each_portfolio['subtitle'] }}</td>
-                              <td>{{ $each_portfolio->category->name }}</td>
-                              <td><img src="{{ asset('storage/'.$each_portfolio['image'])}}" alt="portfolio image" height="80"></td>
-                              <td><a href="{{ route('admin.portfolio.edit', $each_portfolio['id']) }}">Edit</a>|Delete</td>
+                              <td>{{ $each_mail['name'] }}</td>
+                              <td>{{ $each_mail['email'] }}</td>
+                              <td>{{ $each_mail['phone'] }}</td>
+                              <td>{{ $each_mail['subject']}}</td>
+                              <td>{{ $each_mail['message']}}</td>
+                              {{-- <td>Delete</td> --}}
                             </tr>
                             @endforeach
                           </tbody>
